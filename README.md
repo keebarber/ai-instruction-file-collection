@@ -9,7 +9,7 @@ Covers the five things you asked for:
 4. How to **respond to questions**
 5. **When** to ask questions, and **how**
 
-Compiled 2026-06-26. Everything is attributed to its source; cheat-sheets are marked as distilled.
+Compiled 2026-06-26. Everything is attributed to its source; cheat-sheets are marked as distilled. Full provenance — exact URLs, retrieval dates, licenses, and verbatim-vs-distilled status for every file — is in **`SOURCES.md`**.
 
 ---
 
@@ -20,7 +20,11 @@ coding-agents/        How agents should write code + how to write CLAUDE.md / AG
 writing-and-voice/    Words/patterns to avoid + how to sound human (the anti-slop material)
 asking-questions/     When to ask vs. proceed, and how to ask well
 system-prompts/       Where to read the actual shipping system prompts (links)
+skills/               Real SKILL.md files: job search, coding, debugging, testing, + meta
+career-context/       Your reusable "about me" profile for agent-assisted job-search drafting
 ```
+
+See **`skills/README.md`** for the downloaded skill files (resume/cover letter, interview prep, JD analysis, salary negotiation, systematic debugging, TDD, verification-before-done, skill-creator) and **`career-context/`** for your candidate profile.
 
 ### Files
 - **`coding-agents/humanlayer-writing-a-good-CLAUDE-md.md`** — the best essay on why instruction files fail and how to fix them (less-is-more, progressive disclosure, "Claude is not a linter"). *Verbatim, condensed.*
