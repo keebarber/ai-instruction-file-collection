@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>resume-cover-letter.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / resume-cover-letter.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim</span><a class="raw" href="../../../skills/job-search/resume-cover-letter.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: jezweb/claude-skills — https://github.com/jezweb/claude-skills/blob/main/plugins/writing/skills/resume-cover-letter/SKILL.md
+Retrieved 2026-06-26, verbatim. Install: copy this file into a `resume-cover-letter/` folder under your skills dir.
+Pairs with: ../../career-context/candidate-profile.md (feed that in as the "candidate background" input).
+-->
+<hr />
+<p>name: resume-cover-letter
+description: "Write a resume / CV or cover letter tailored to a specific role. Handles regional format differences (AU/NZ, US, UK), ATS-friendly formatting, achievement-focused bullets, and cover letter structure. Use whenever the user mentions a job application, resume, CV, cover letter, career document, applying for a role, or needs help framing their experience for a specific job."</p>
+<hr />
+<h1 id="resume-and-cover-letter-writer">Resume and Cover Letter Writer</h1>
+<p>Produces job application documents: a resume/CV, a cover letter, or both. Every output is tailored to a specific role at a specific company — generic documents are not useful.</p>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Gather these inputs. Ask for anything missing:</p>
+<ol>
+<li><strong>Target role</strong> — job title, company name, and the job listing or description (paste or URL)</li>
+<li><strong>Mode</strong> — "resume", "cover-letter", or "both"</li>
+<li><strong>Region</strong> — AU/NZ, US, or UK (affects format, terminology, length expectations)</li>
+<li><strong>Candidate background</strong> — current role, years of experience, key skills, education, career highlights</li>
+<li><strong>Special circumstances</strong> (if any) — career change, employment gap, overqualified, underqualified, visa/relocation</li>
+</ol>
+<p>If the user provides a job listing, extract the key requirements and tailor everything to match them. Mirror the language the listing uses for skills and responsibilities.</p>
+<hr />
+<h2 id="resume-cv">Resume / CV</h2>
+<h3 id="regional-format-differences">Regional Format Differences</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>AU/NZ</th>
+<th>US</th>
+<th>UK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>CV or resume (both accepted)</td>
+<td>Resume</td>
+<td>CV</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>2-3 pages standard</td>
+<td>1 page (&lt;10 years exp), 2 max</td>
+<td>2 pages standard</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Date of birth / age</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Nationality / visa</td>
+<td>Include if relevant (common in AU/NZ)</td>
+<td>No (discrimination risk)</td>
+<td>Include visa status if applicable</td>
+</tr>
+<tr>
+<td>Referees</td>
+<td>"Available on request" is outdated — omit entirely, or list 2 if specifically requested</td>
+<td>Omit</td>
+<td>Omit</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>City/state only (no street)</td>
+<td>City/state only</td>
+<td>City only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-order">Section Order</h3>
+<p>Adjust based on seniority and what sells the candidate best:</p>
+<p><strong>Entry-level / graduate (0-3 years):</strong>
+1. Contact details
+2. Professional summary (3-4 lines)
+3. Education
+4. Experience (internships, part-time, volunteer)
+5. Skills
+6. Certifications / projects</p>
+<p><strong>Mid-career (3-10 years):</strong>
+1. Contact details
+2. Professional summary
+3. Experience
+4. Skills
+5. Education
+6. Certifications</p>
+<p><strong>Senior / executive (10+ years):</strong>
+1. Contact details
+2. Executive summary
+3. Key achievements (optional highlight section)
+4. Experience
+5. Board / advisory roles (if applicable)
+6. Education
+7. Professional memberships</p>
+<h3 id="writing-achievement-bullets">Writing Achievement Bullets</h3>
+<p>Use CAR format: <strong>Challenge</strong> (context/problem), <strong>Action</strong> (what you did), <strong>Result</strong> (measurable outcome).</p>
+<p>Every bullet should answer: "So what? What changed because of this?"</p>
+<p><strong>Too generic:</strong></p>
+<blockquote>
+<p>Managed social media accounts and created content for the company.</p>
+</blockquote>
+<p><strong>Right approach (CAR):</strong></p>
+<blockquote>
+<p>Rebuilt the social media strategy for a stagnant B2B account (Challenge), shifting from product-focused posts to customer case studies with a consistent weekly publishing schedule (Action), growing LinkedIn engagement 340% and generating 12 qualified leads in the first quarter (Result).</p>
+</blockquote>
+<p>Not every bullet needs hard numbers, but aim for at least 60% of bullets to include a measurable result. Acceptable result types:
+- Percentages (increased, reduced, improved by X%)
+- Dollar amounts (managed $X budget, saved $X, generated $X revenue)
+- Volume/scale (team of X, X users, X transactions per day)
+- Time (reduced from X weeks to Y days, delivered 2 weeks ahead of schedule)
+- Rankings/ratings (achieved #1, rated 4.8/5, top 10%)</p>
+<p>When the user does not have specific numbers, ask if they can estimate. If not, use qualitative results: "significantly reduced", "consistently exceeded targets", "recognised by leadership for".</p>
+<h3 id="action-verbs">Action Verbs</h3>
+<p>Choose verbs that match the type of contribution:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Verbs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leadership</td>
+<td>Led, directed, managed, oversaw, mentored, championed, established</td>
+</tr>
+<tr>
+<td>Creation</td>
+<td>Developed, designed, built, launched, created, implemented, introduced</td>
+</tr>
+<tr>
+<td>Improvement</td>
+<td>Increased, improved, streamlined, optimised, reduced, enhanced, modernised</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>Analysed, evaluated, assessed, identified, researched, investigated</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Presented, negotiated, facilitated, coordinated, advised, authored</td>
+</tr>
+<tr>
+<td>Technical</td>
+<td>Engineered, automated, configured, deployed, integrated, migrated, architected</td>
+</tr>
+</tbody>
+</table>
+<p>Avoid weak openers: "Responsible for", "Helped with", "Assisted in", "Involved in", "Participated in". These describe proximity, not contribution.</p>
+<h3 id="ats-friendly-formatting">ATS-Friendly Formatting</h3>
+<p>Applicant Tracking Systems parse resumes before humans see them. Follow these rules:</p>
+<ul>
+<li>Use standard section headings: "Experience", "Education", "Skills" — not creative alternatives like "Where I've Made an Impact"</li>
+<li>No tables, columns, or text boxes — ATS reads left-to-right, top-to-bottom</li>
+<li>No headers or footers — ATS often ignores these entirely</li>
+<li>No images, icons, or graphics</li>
+<li>Use standard fonts (Calibri, Arial, Garamond, Georgia)</li>
+<li>File format: PDF unless the listing specifically requests .docx</li>
+<li>Include keywords from the job listing naturally in context — not keyword-stuffed in a hidden block</li>
+<li>Spell out acronyms on first use, then abbreviate: "Search Engine Optimisation (SEO)"</li>
+</ul>
+<h3 id="what-to-omit">What to Omit</h3>
+<ul>
+<li>"References available upon request" — assumed and wastes space</li>
+<li>Objective statements — replaced by professional summaries years ago</li>
+<li>Every job since high school — include only relevant roles (last 10-15 years)</li>
+<li>High school education (if you have a degree)</li>
+<li>Hobbies/interests — unless directly relevant to the role or culture</li>
+<li>Salary expectations — never on the resume itself</li>
+<li>Reasons for leaving previous roles</li>
+</ul>
+<h3 id="professional-summary">Professional Summary</h3>
+<p>3-4 lines at the top. Not a personality description — a positioning statement.</p>
+<p><strong>Too vague:</strong></p>
+<blockquote>
+<p>Motivated professional with strong communication skills and a passion for technology seeking a challenging role.</p>
+</blockquote>
+<p><strong>Right approach:</strong></p>
+<blockquote>
+<p>Operations manager with 8 years in logistics and supply chain for mid-market retailers. Track record of reducing fulfilment costs (cut 22% at current role) while maintaining 99.4% on-time delivery. Looking to bring that operational discipline to a high-growth e-commerce environment.</p>
+</blockquote>
+<p>Formula: [Role identity] + [years/domain] + [signature achievement or strength] + [what you're looking for].</p>
+<hr />
+<h2 id="cover-letter">Cover Letter</h2>
+<h3 id="structure">Structure</h3>
+<p>Three to four paragraphs, under one page. Every paragraph earns its place.</p>
+<p><strong>Paragraph 1 — Opening hook:</strong>
+Why this role, why now, why you noticed. Reference something specific about the company or role. No "I am writing to express my interest in the position of..." — that is the most wasted sentence in job applications.</p>
+<p><strong>Paragraph 2 — Why you (the match):</strong>
+Two to three specific examples of how your experience maps to their requirements. This is not a resume summary — pick the two strongest matches and give brief context. Use language from the job listing.</p>
+<p><strong>Paragraph 3 — Why this company (the fit):</strong>
+Show you have done your homework. Reference their product, mission, recent news, company culture, or a specific project. Explain why this matters to you personally. Generic flattery ("I admire your innovative approach") does not count.</p>
+<p><strong>Paragraph 4 — Close:</strong>
+Clear call to action. "I'd welcome the chance to discuss how my experience in X could support your team's work on Y. I'm available for a conversation at your convenience." Confident, not desperate.</p>
+<h3 id="length-and-format">Length and Format</h3>
+<ul>
+<li>Under one page, always</li>
+<li>Same header/font as the resume for visual consistency</li>
+<li>Address to a named person where possible (check LinkedIn, company website). "Dear Hiring Manager" as a last resort</li>
+<li>AU/NZ: sign off with "Kind regards" (proposals/applications) or "Cheers" (if tone is casual)</li>
+<li>US/UK: "Sincerely" or "Kind regards"</li>
+</ul>
+<h3 id="tone-matching">Tone Matching</h3>
+<p>Read the job listing and company website to calibrate tone:</p>
+<table>
+<thead>
+<tr>
+<th>Company type</th>
+<th>Tone</th>
+<th>Example phrasing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Startup / tech</td>
+<td>Conversational, direct</td>
+<td>"I've spent the last 3 years building exactly this kind of thing"</td>
+</tr>
+<tr>
+<td>Corporate / enterprise</td>
+<td>Professional, measured</td>
+<td>"My experience in enterprise integration aligns closely with your stated objectives"</td>
+</tr>
+<tr>
+<td>Government / public sector</td>
+<td>Formal, criteria-driven</td>
+<td>"I address each of the key selection criteria below"</td>
+</tr>
+<tr>
+<td>Creative agency</td>
+<td>Personality forward</td>
+<td>"Your work on the X campaign is what made me pay attention"</td>
+</tr>
+<tr>
+<td>Non-profit</td>
+<td>Mission-aligned</td>
+<td>"I've followed your work in X for several years and share your commitment to Y"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-mistakes">Common Mistakes</h3>
+<ul>
+<li><strong>Rehashing the resume.</strong> The cover letter adds context and personality — it does not repeat bullet points.</li>
+<li><strong>Generic openings.</strong> "I am excited to apply for..." tells the reader nothing. Open with something specific.</li>
+<li><strong>No company reference.</strong> If you could send the same letter to 50 companies, it is too generic.</li>
+<li><strong>Underselling or overselling.</strong> State what you have done, factually. No "I'm the perfect candidate" and no "I know I don't have much experience but..."</li>
+<li><strong>Burying the lead.</strong> If you have a direct connection to the role (you use their product, you know someone there, you have deep domain expertise), say it in the first line.</li>
+</ul>
+<h3 id="cover-letter-example">Cover Letter Example</h3>
+<p><strong>Too generic:</strong></p>
+<blockquote>
+<p>Dear Hiring Manager,</p>
+<p>I am writing to express my interest in the Marketing Manager position. I have 5 years of marketing experience and am a strong communicator with excellent organisational skills. I believe I would be a great addition to your team.</p>
+</blockquote>
+<p><strong>Right approach:</strong></p>
+<blockquote>
+<p>Hi Sarah,</p>
+<p>Your job listing mentioned you are looking for someone to rebuild the content strategy from the ground up — that is exactly what I did at Redgum Digital over the past two years, taking their blog from 400 monthly visitors to 12,000 and making it their primary lead channel.</p>
+<p>The two things that stood out in the listing were the focus on SEO-driven content and the need to work closely with the sales team on case studies. At Redgum, I built both of those functions: a keyword-driven editorial calendar that targeted commercial intent terms, and a case study pipeline where I partnered with account managers to document client wins monthly. Five of those case studies became our top-converting landing pages.</p>
+<p>I have been following [Company]'s expansion into the SME market since the product launch in October. The positioning challenge — making enterprise-grade software feel approachable for smaller teams — is something I find genuinely interesting, and it is the kind of messaging work I do best.</p>
+<p>I would welcome the chance to talk through how I could help build out your content operation. Happy to chat whenever suits.</p>
+</blockquote>
+<hr />
+<h2 id="special-circumstances">Special Circumstances</h2>
+<h3 id="career-changers">Career changers</h3>
+<p>Lead with transferable skills, not job titles. The professional summary should bridge the gap: "Project manager transitioning from construction to software delivery — 6 years of managing cross-functional teams, budgets, and tight deadlines." Emphasise skills that translate directly.</p>
+<h3 id="employment-gaps">Employment gaps</h3>
+<p>Do not hide them or get creative with dates. If there is a gap, briefly explain it in the cover letter (caring responsibilities, study, travel, health — one sentence is enough). On the resume, list any relevant activity during the gap: freelance work, volunteering, courses, personal projects.</p>
+<h3 id="overqualified">Overqualified</h3>
+<p>The cover letter must address the obvious question: "Why do you want this role?" Be direct about your motivation. Scaling back for work-life balance, pivoting into a new area, genuinely interested in the company — whatever the reason, name it.</p>
+<h3 id="underqualified">Underqualified</h3>
+<p>Focus on adjacent experience and learning velocity. Show you have done something similar at a smaller scale or in a different context. The cover letter should acknowledge the stretch honestly while demonstrating you have closed similar gaps before.</p>
+<h3 id="multiple-roles-at-the-same-company">Multiple roles at the same company</h3>
+<p>List the company once with each role as a sub-entry showing clear progression. This signals growth and loyalty.</p>
+<hr />
+<h2 id="output-format">Output Format</h2>
+<p>Deliver the document as clean markdown. If the user needs a formatted file, offer to create it as a .md or .txt that they can paste into their preferred tool (Google Docs, Word, Canva). Do not attempt to generate .docx or .pdf files directly.</p>
+<p>For "both" mode, deliver the resume first, then the cover letter, in the same response.</p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/job-search/resume-cover-letter.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skill-creator.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / skill-creator.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim · Apache 2.0</span><a class="raw" href="../../../skills/meta/skill-creator.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: anthropics/skills (official) — https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
+Retrieved 2026-06-26. License: Apache 2.0 (example skills in anthropics/skills).
+CONDENSED: this keeps the reusable "how to write a good skill" guidance. The full skill also includes an
+eval/benchmark harness (scripts/, eval-viewer/, agents/) for measuring skill performance — clone the repo for those.
+This is the skill to use when you want to turn any of your repeating workflows into a new skill.
+-->
+<hr />
+<p>name: skill-creator
+description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.</p>
+<hr />
+<h1 id="skill-creator">Skill Creator</h1>
+<p>A skill for creating new skills and iteratively improving them.</p>
+<p>The high-level process:
+- Decide what you want the skill to do and roughly how.
+- Write a draft of the skill.
+- Create a few test prompts and run Claude-with-the-skill on them.
+- Evaluate the results qualitatively and (optionally) quantitatively.
+- Rewrite based on feedback. Repeat until satisfied. Then expand the test set and try at larger scale.</p>
+<h2 id="creating-a-skill">Creating a skill</h2>
+<h3 id="capture-intent">Capture intent</h3>
+<p>Understand the user's intent first. If the conversation already contains the workflow ("turn this into a skill"), extract: tools used, sequence of steps, corrections the user made, input/output formats observed. Confirm before proceeding.</p>
+<p>Key questions:
+1. What should this skill enable Claude to do?
+2. When should it trigger? (what user phrases/contexts)
+3. What's the expected output format?
+4. Should we set up test cases? (Objectively verifiable outputs — file transforms, data extraction, code generation — benefit from tests. Subjective outputs — writing style, art — often don't.)</p>
+<h3 id="write-the-skillmd">Write the SKILL.md</h3>
+<p>Fill in these components:
+- <strong>name</strong>: skill identifier.
+- <strong>description</strong>: the primary triggering mechanism — include BOTH what the skill does AND specific contexts for when to use it. All "when to use" info goes here, not in the body. Claude tends to <em>undertrigger</em> skills, so make descriptions a little "pushy." Instead of "How to build a dashboard for internal data," write "How to build a dashboard for internal data. Use this skill whenever the user mentions dashboards, data visualization, internal metrics, or wants to display any company data, even if they don't explicitly say 'dashboard.'"
+- the rest of the skill.</p>
+<h3 id="anatomy-of-a-skill">Anatomy of a skill</h3>
+<pre><code>skill-name/
+├── SKILL.md (required)
+│   ├── YAML frontmatter (name, description required)
+│   └── Markdown instructions
+└── Bundled Resources (optional)
+    ├── scripts/    - Executable code for deterministic/repetitive tasks
+    ├── references/ - Docs loaded into context as needed
+    └── assets/     - Files used in output (templates, icons, fonts)
+</code></pre>
+<h3 id="progressive-disclosure-three-level-loading">Progressive disclosure (three-level loading)</h3>
+<ol>
+<li><strong>Metadata</strong> (name + description) — always in context (~100 words).</li>
+<li><strong>SKILL.md body</strong> — in context whenever the skill triggers (&lt;500 lines ideal).</li>
+<li><strong>Bundled resources</strong> — loaded as needed (unlimited; scripts can execute without loading into context).</li>
+</ol>
+<p>Key patterns: keep SKILL.md under 500 lines; if approaching the limit, add a layer of hierarchy with clear pointers to follow-up files. Reference files clearly with guidance on when to read them. For large reference files (&gt;300 lines), include a table of contents. When a skill supports multiple domains/frameworks, organize by variant (e.g., references/aws.md, gcp.md, azure.md) so Claude reads only the relevant one.</p>
+<h3 id="principle-of-lack-of-surprise">Principle of lack of surprise</h3>
+<p>Skills must not contain malware, exploit code, or anything that compromises security. A skill's contents should not surprise the user given its description. Don't create misleading skills or skills for unauthorized access/data exfiltration. (Roleplay-style skills are fine.)</p>
+<h3 id="writing-patterns">Writing patterns</h3>
+<p>Prefer the imperative form. Define output formats explicitly with templates. Include input/output examples.</p>
+<pre><code class="language-markdown">## Commit message format
+Input: Added user authentication with JWT tokens
+Output: feat(auth): implement JWT-based authentication
+</code></pre>
+<h3 id="writing-style">Writing style</h3>
+<p>Explain <em>why</em> things matter rather than piling on heavy-handed MUSTs. Today's models have good theory of mind; given the reasoning, they go beyond rote instructions. If you find yourself writing ALWAYS or NEVER in all caps or using rigid structures, that's a yellow flag — reframe and explain the reasoning instead. Write a draft, then look at it with fresh eyes and improve it.</p>
+<h3 id="test-cases">Test cases</h3>
+<p>After a draft, write 2-3 realistic test prompts (the kind a real user would actually type). Share them with the user, then run them. Save to <code>evals/evals.json</code> (prompts first; assertions later). Good assertions are objectively verifiable with descriptive names. Subjective skills are better judged qualitatively — don't force assertions onto things that need human judgment.</p>
+<h2 id="improving-the-skill-the-heart-of-the-loop">Improving the skill (the heart of the loop)</h2>
+<ol>
+<li><strong>Generalize from feedback.</strong> You're iterating on a few examples, but the skill must work across millions of future prompts. Avoid fiddly, overfit changes and oppressive MUSTs. If an issue is stubborn, try different metaphors or working patterns — it's cheap to try.</li>
+<li><strong>Keep the prompt lean.</strong> Remove things that aren't pulling their weight. Read the transcripts, not just the outputs — cut parts that make the model waste time.</li>
+<li><strong>Explain the why.</strong> Even if user feedback is terse, understand the task and transmit that understanding into the instructions.</li>
+<li><strong>Look for repeated work across test cases.</strong> If every run independently writes a similar helper script, bundle that script in <code>scripts/</code> and have the skill use it.</li>
+</ol>
+<h2 id="description-optimization">Description optimization</h2>
+<p>The description field determines whether Claude invokes the skill. After creating/improving a skill, optimize it: generate ~20 realistic trigger eval queries (8-10 should-trigger with varied phrasings, 8-10 should-not-trigger "near-misses" that share keywords but need something else — avoid obviously-irrelevant negatives). The full skill provides a <code>run_loop.py</code> that splits train/held-out test, evaluates each description (3 runs per query for a reliable trigger rate), and iterates up to 5 times, selecting <code>best_description</code> by test score to avoid overfitting.</p>
+<h3 id="how-skill-triggering-works">How skill triggering works</h3>
+<p>Skills appear in Claude's <code>available_skills</code> list with name + description; Claude decides whether to consult a skill based on that description. Claude only consults skills for tasks it can't easily handle on its own — simple one-step queries ("read this PDF") may not trigger a skill even with a perfect description, because Claude handles them directly. So make eval queries substantive enough that consulting a skill is genuinely beneficial.</p>
+<h2 id="core-loop-for-emphasis">Core loop (for emphasis)</h2>
+<ul>
+<li>Figure out what the skill is about → draft/edit → run Claude-with-the-skill on test prompts → evaluate outputs with the user (qualitatively, plus quantitative evals if appropriate) → repeat until satisfied → package and return the final skill.</li>
+</ul>
+<blockquote>
+<p>The full official skill includes scripts for packaging (<code>package_skill.py</code>), an eval viewer (<code>generate_review.py</code>), grader/comparator/analyzer subagent instructions, and schema references. Get them from https://github.com/anthropics/skills if you want the measurement harness. NOTE: Cowork already ships a <code>skill-creator</code> skill — you can invoke it directly rather than installing this copy.</p>
+</blockquote>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/meta/skill-creator.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

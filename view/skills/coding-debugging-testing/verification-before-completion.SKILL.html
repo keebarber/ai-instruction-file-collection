@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>verification-before-completion.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / verification-before-completion.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim</span><a class="raw" href="../../../skills/coding-debugging-testing/verification-before-completion.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: obra/superpowers (Jesse Vincent) — https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md
+Retrieved 2026-06-26, verbatim.
+-->
+<hr />
+<p>name: verification-before-completion
+description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always</p>
+<hr />
+<h1 id="verification-before-completion">Verification Before Completion</h1>
+<h2 id="overview">Overview</h2>
+<p>Claiming work is complete without verification is dishonesty, not efficiency.</p>
+<p><strong>Core principle:</strong> Evidence before claims, always.</p>
+<p><strong>Violating the letter of this rule is violating the spirit of this rule.</strong></p>
+<h2 id="the-iron-law">The Iron Law</h2>
+<pre><code>NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
+</code></pre>
+<p>If you haven't run the verification command in this message, you cannot claim it passes.</p>
+<h2 id="the-gate-function">The Gate Function</h2>
+<pre><code>BEFORE claiming any status or expressing satisfaction:
+1. IDENTIFY: What command proves this claim?
+2. RUN: Execute the FULL command (fresh, complete)
+3. READ: Full output, check exit code, count failures
+4. VERIFY: Does output confirm the claim?
+   - If NO: State actual status with evidence
+   - If YES: State claim WITH evidence
+5. ONLY THEN: Make the claim
+Skip any step = lying, not verifying
+</code></pre>
+<h2 id="common-failures">Common Failures</h2>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Requires</th>
+<th>Not Sufficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tests pass</td>
+<td>Test command output: 0 failures</td>
+<td>Previous run, "should pass"</td>
+</tr>
+<tr>
+<td>Linter clean</td>
+<td>Linter output: 0 errors</td>
+<td>Partial check, extrapolation</td>
+</tr>
+<tr>
+<td>Build succeeds</td>
+<td>Build command: exit 0</td>
+<td>Linter passing, logs look good</td>
+</tr>
+<tr>
+<td>Bug fixed</td>
+<td>Test original symptom: passes</td>
+<td>Code changed, assumed fixed</td>
+</tr>
+<tr>
+<td>Regression test works</td>
+<td>Red-green cycle verified</td>
+<td>Test passes once</td>
+</tr>
+<tr>
+<td>Agent completed</td>
+<td>VCS diff shows changes</td>
+<td>Agent reports "success"</td>
+</tr>
+<tr>
+<td>Requirements met</td>
+<td>Line-by-line checklist</td>
+<td>Tests passing</td>
+</tr>
+</tbody>
+</table>
+<h2 id="red-flags-stop">Red Flags — STOP</h2>
+<p>Using "should", "probably", "seems to" · expressing satisfaction before verification ("Great!", "Perfect!", "Done!") · about to commit/push/PR without verification · trusting agent success reports · relying on partial verification · "just this once" · tired and wanting work over · ANY wording implying success without having run verification.</p>
+<h2 id="rationalization-prevention">Rationalization Prevention</h2>
+<table>
+<thead>
+<tr>
+<th>Excuse</th>
+<th>Reality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Should work now"</td>
+<td>RUN the verification</td>
+</tr>
+<tr>
+<td>"I'm confident"</td>
+<td>Confidence ≠ evidence</td>
+</tr>
+<tr>
+<td>"Just this once"</td>
+<td>No exceptions</td>
+</tr>
+<tr>
+<td>"Linter passed"</td>
+<td>Linter ≠ compiler</td>
+</tr>
+<tr>
+<td>"Agent said success"</td>
+<td>Verify independently</td>
+</tr>
+<tr>
+<td>"I'm tired"</td>
+<td>Exhaustion ≠ excuse</td>
+</tr>
+<tr>
+<td>"Partial check is enough"</td>
+<td>Partial proves nothing</td>
+</tr>
+<tr>
+<td>"Different words so rule doesn't apply"</td>
+<td>Spirit over letter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-patterns">Key Patterns</h2>
+<p><strong>Tests:</strong> ✅ [Run test command] [See: 34/34 pass] "All tests pass" ❌ "Should pass now"
+<strong>Regression tests (TDD Red-Green):</strong> ✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass) ❌ "I've written a regression test" (without red-green verification)
+<strong>Build:</strong> ✅ [Run build] [See: exit 0] "Build passes" ❌ "Linter passed" (linter doesn't check compilation)
+<strong>Requirements:</strong> ✅ Re-read plan → checklist → verify each → report gaps or completion ❌ "Tests pass, phase complete"
+<strong>Agent delegation:</strong> ✅ Agent reports success → check VCS diff → verify changes → report actual state ❌ Trust agent report</p>
+<h2 id="when-to-apply">When To Apply</h2>
+<p>ALWAYS before: any success/completion claim; any expression of satisfaction; any positive statement about work state; committing, PR creation, task completion; moving to the next task; delegating to agents. The rule applies to exact phrases, paraphrases, synonyms, and any implication of success.</p>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<p>No shortcuts for verification. Run the command. Read the output. THEN claim the result. This is non-negotiable.</p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/coding-debugging-testing/verification-before-completion.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

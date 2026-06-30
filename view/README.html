@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#4f46e5;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../index.html">← Overview</a>
+    <span class="crumb"><b>Reference</b> / README.md</span>
+    <span class="right"><span class="chip b-links">Index</span><a class="raw" href="../README.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="ai-instruction-file-collection">AI Instruction File Collection</h1>
+<p>A curated, opinionated collection of the best instruction files and references for steering LLMs and AI coding agents — the real files, plus distilled cheat-sheets and an annotated link directory.</p>
+<p>Covers the five things you asked for:
+1. Words / practices / patterns to <strong>avoid</strong>
+2. How to <strong>write / speak / sound</strong>
+3. How to <strong>write code</strong> — what to avoid, check for, and do
+4. How to <strong>respond to questions</strong>
+5. <strong>When</strong> to ask questions, and <strong>how</strong></p>
+<p>Compiled 2026-06-26. Everything is attributed to its source; cheat-sheets are marked as distilled. Full provenance — exact URLs, retrieval dates, licenses, and verbatim-vs-distilled status for every file — is in <strong><code>SOURCES.md</code></strong>.</p>
+<hr />
+<h2 id="whats-in-this-repo">What's in this repo</h2>
+<pre><code>coding-agents/        How agents should write code + how to write CLAUDE.md / AGENTS.md
+writing-and-voice/    Words/patterns to avoid + how to sound human (the anti-slop material)
+asking-questions/     When to ask vs. proceed, and how to ask well
+system-prompts/       Where to read the actual shipping system prompts (links)
+skills/               Real SKILL.md files: job search, coding, debugging, testing, + meta
+career-context/       Your reusable &quot;about me&quot; profile for agent-assisted job-search drafting
+</code></pre>
+<p>See <strong><code>skills/README.md</code></strong> for the downloaded skill files (resume/cover letter, interview prep, JD analysis, salary negotiation, systematic debugging, TDD, verification-before-done, skill-creator) and <strong><code>career-context/</code></strong> for your candidate profile.</p>
+<h3 id="files">Files</h3>
+<ul>
+<li><strong><code>coding-agents/humanlayer-writing-a-good-CLAUDE-md.md</code></strong> — the best essay on why instruction files fail and how to fix them (less-is-more, progressive disclosure, "Claude is not a linter"). <em>Verbatim, condensed.</em></li>
+<li><strong><code>coding-agents/anthropic-claude-code-best-practices.md</code></strong> — Anthropic's official guide: verify-your-work, explore→plan→code, what to put in (and keep out of) a CLAUDE.md. <em>Verbatim, condensed.</em></li>
+<li><strong><code>coding-agents/agents-md-spec-and-examples.md</code></strong> — the cross-tool AGENTS.md open standard with copy-paste examples. <em>Verbatim.</em></li>
+<li><strong><code>coding-agents/openai-codex-agents-md-guide.md</code></strong> — how global + project + nested instruction files merge and override. <em>Verbatim, condensed.</em></li>
+<li><strong><code>coding-agents/shanraisshan-CLAUDE.md</code></strong> — a real, working CLAUDE.md to use as a structural template. <em>Verbatim.</em></li>
+<li><strong><code>coding-agents/how-to-write-code-rules.cheatsheet.md</code></strong> — paste-ready coding rules (verify, avoid, do). <em>Distilled.</em></li>
+<li><strong><code>writing-and-voice/avoid-ai-writing.SKILL.md</code></strong> — the standout file: a 42-pattern, 3-tier word/phrase audit you can install as a skill. <em>Verbatim, MIT.</em></li>
+<li><strong><code>writing-and-voice/words-and-phrases-to-avoid.cheatsheet.md</code></strong> — the short list + structures to ban. <em>Distilled.</em></li>
+<li><strong><code>writing-and-voice/how-to-write-and-sound.md</code></strong> — positive voice/tone rules to pair with the avoid-list. <em>Distilled.</em></li>
+<li><strong><code>asking-questions/when-and-how-to-ask-questions.md</code></strong> — ask-vs-proceed rules + the "interview me" pattern. <em>Distilled.</em></li>
+<li><strong><code>system-prompts/README.md</code></strong> — annotated links to the big leaked-system-prompt archives. <em>Links.</em></li>
+</ul>
+<hr />
+<h2 id="annotated-link-directory">Annotated link directory</h2>
+<h3 id="1-words-practices-patterns-to-avoid">1. Words / practices / patterns to avoid</h3>
+<ul>
+<li><strong>conorbronsdon/avoid-ai-writing</strong> — https://github.com/conorbronsdon/avoid-ai-writing — the best single resource. SKILL.md with 42 detected patterns, a tiered 109-entry word table, context profiles, and a detect-only mode. Saved here as <code>writing-and-voice/avoid-ai-writing.SKILL.md</code>. (1.5k★, MIT)</li>
+<li><strong>Wikipedia: Signs of AI writing</strong> — https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing — the canonical, editor-maintained catalogue of AI tells.</li>
+<li><strong>brandonwise/humanizer</strong> — https://github.com/brandonwise/humanizer — the tiered-vocabulary research the avoid-ai-writing word tables are adapted from (burstiness, sentence-length variation, trigram repetition).</li>
+<li><strong>Pangram Labs</strong> — https://www.pangram.com/ — AI-detection research; the source for "structure beats vocabulary as a detection signal."</li>
+<li>"The prompt we use to prevent AI slop" (Towards AI) — https://learnaitogethernewsletter.substack.com/p/the-prompt-we-use-to-prevent-ai-slop</li>
+</ul>
+<h3 id="2-how-to-write-speak-sound">2. How to write / speak / sound</h3>
+<ul>
+<li>See <code>writing-and-voice/how-to-write-and-sound.md</code> (positive rules) and the tone-calibration section of the avoid-ai-writing skill.</li>
+<li><strong>Anthropic prompting best practices</strong> — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</li>
+<li><strong>Anthropic interactive prompt-engineering tutorial</strong> — https://github.com/anthropics/prompt-eng-interactive-tutorial</li>
+<li><strong>Effective context engineering for AI agents</strong> (Anthropic) — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+</ul>
+<h3 id="3-how-to-write-code-avoid-check-do">3. How to write code (avoid / check / do)</h3>
+<ul>
+<li><strong>Anthropic, Best practices for Claude Code</strong> — https://code.claude.com/docs/en/best-practices (saved here)</li>
+<li><strong>HumanLayer, Writing a good CLAUDE.md</strong> — https://www.humanlayer.dev/blog/writing-a-good-claude-md (saved here)</li>
+<li><strong>PatrickJS/awesome-cursorrules</strong> — https://github.com/PatrickJS/awesome-cursorrules — the largest collection of real <code>.cursorrules</code> / <code>.cursor/rules/*.mdc</code> files, organized by language/framework. Best place to grab a ready-made coding rules file.</li>
+<li><strong>tonynguyennvt/cursor-rules-awesome</strong> — https://github.com/tonynguyennvt/cursor-rules-awesome — 4,800+ lines of comprehensive coding standards (OWASP, SRE, multiple languages, compliance frameworks).</li>
+<li><strong>agents.md</strong> — https://agents.md/ — the cross-tool standard (saved here).</li>
+<li><strong>FlorianBruniaux/claude-code-ultimate-guide</strong> — https://github.com/FlorianBruniaux/claude-code-ultimate-guide — large guide to agentic workflows, hooks, skills, MCP, templates.</li>
+<li><strong>hesreallyhim/awesome-claude-code</strong> — https://github.com/hesreallyhim/awesome-claude-code — curated skills, hooks, slash-commands, agents, plugins.</li>
+<li><strong>shanraisshan/claude-code-best-practice</strong> — https://github.com/shanraisshan/claude-code-best-practice — patterns for skills/subagents/hooks (its CLAUDE.md saved here).</li>
+<li><strong>kirill-markin, Claude Code rules</strong> — https://kirill-markin.com/articles/claude-code-rules-for-ai/ — a worked global-instructions setup.</li>
+</ul>
+<h3 id="4-how-to-respond-to-questions">4. How to respond to questions</h3>
+<ul>
+<li>The shipping <strong>system prompts</strong> are the best teachers here — see <code>system-prompts/README.md</code>. Look at how Claude / ChatGPT / Cursor are told to format answers, when to use prose vs. lists, and how to avoid sycophancy.</li>
+<li><strong>Piebald-AI/claude-code-system-prompts</strong> — https://github.com/Piebald-AI/claude-code-system-prompts — Claude Code's full prompt + tool descriptions + sub-agent prompts.</li>
+<li><strong>x1xhlol/system-prompts-and-models-of-ai-tools</strong> — https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools — 100k★ coding-tool prompts.</li>
+</ul>
+<h3 id="5-when-how-to-ask-questions">5. When + how to ask questions</h3>
+<ul>
+<li>See <code>asking-questions/when-and-how-to-ask-questions.md</code>.</li>
+<li>The <strong>"let Claude interview you"</strong> pattern in Anthropic's best-practices guide is the standout technique.</li>
+<li><strong>OpenAI Codex prompting</strong> — https://developers.openai.com/codex/prompting</li>
+</ul>
+<hr />
+<h2 id="how-to-use-this">How to use this</h2>
+<ul>
+<li><strong>Building a CLAUDE.md / AGENTS.md?</strong> Start with <code>coding-agents/humanlayer-writing-a-good-CLAUDE-md.md</code> and the Anthropic include/exclude table, then pull lines from <code>how-to-write-code-rules.cheatsheet.md</code>. Keep it under ~150 lines and only include what would actually change behavior.</li>
+<li><strong>Want cleaner writing out of any model?</strong> Install <code>writing-and-voice/avoid-ai-writing.SKILL.md</code> as a skill (drop it in <code>~/.claude/skills/avoid-ai-writing/</code>), or paste <code>words-and-phrases-to-avoid.cheatsheet.md</code> + <code>how-to-write-and-sound.md</code> into your system prompt.</li>
+<li><strong>Setting agent question-asking behavior?</strong> Use the paste-ready block in <code>asking-questions/</code>.</li>
+<li><strong>Studying how the pros do it?</strong> Clone a repo from <code>system-prompts/README.md</code>.</li>
+</ul>
+<h2 id="a-meta-warning-from-the-sources-themselves">A meta-warning (from the sources themselves)</h2>
+<p>More rules ≠ better behavior. Research cited by HumanLayer shows instruction-following degrades <em>uniformly</em> as instruction count rises — past a point, the model starts ignoring <em>all</em> your rules, not just the newest. Keep instruction files short, specific, and observable. Prune ruthlessly. Use deterministic tools (linters, hooks, tests) for anything a tool can enforce, and save the instruction file for what only it can convey.</p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>README.md</code> · part of the <a href="../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

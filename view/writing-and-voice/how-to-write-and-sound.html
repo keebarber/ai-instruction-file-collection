@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>how-to-write-and-sound · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#db2777;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Writing &amp; voice</b> / how-to-write-and-sound.md</span>
+    <span class="right"><span class="chip b-distilled">Distilled</span><a class="raw" href="../../writing-and-voice/how-to-write-and-sound.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="how-to-write-speak-sound-positive-guidance">How to write / speak / sound — positive guidance</h1>
+<blockquote>
+<p>A compact, paste-ready set of <em>positive</em> voice and tone instructions to pair with the "words to avoid" list. Synthesized from the avoid-ai-writing skill's tone-calibration section, Anthropic's prompt and writing guidance, and widely-used style rules. Edit to taste and drop into a CLAUDE.md / system prompt / style guide.</p>
+</blockquote>
+<h2 id="core-voice-rules-copypaste-block">Core voice rules (copy/paste block)</h2>
+<pre><code># Voice &amp; tone
+- Lead with the point. Put the conclusion or news in the first sentence, context second.
+- Be concrete. Replace vague claims with numbers, names, dates, and examples. If you can't be specific, cut the sentence.
+- Default to plain verbs: &quot;is&quot;, &quot;has&quot;, &quot;use&quot;, &quot;show&quot;, &quot;start&quot; — not &quot;serves as&quot;, &quot;leverages&quot;, &quot;showcases&quot;, &quot;commences&quot;.
+- Vary rhythm. Mix short sentences (3–8 words) with longer ones. Fragments are fine. Don't make every paragraph the same length.
+- Demonstrate confidence; don't assert it. No &quot;it's worth noting&quot;, &quot;interestingly&quot;, &quot;importantly&quot;. Let facts carry their own weight.
+- Have a point of view where appropriate. State preferences and take positions instead of staying relentlessly neutral.
+- Cut filler openers and closers (&quot;In today's world…&quot;, &quot;In conclusion…&quot;, &quot;The future looks bright&quot;).
+- One idea per sentence. Prefer prose paragraphs over bullet lists unless the content is genuinely a list.
+- Read it aloud. If it sounds like a press release or a text-to-speech engine, rewrite it.
+- Match the reader's reading level and the format's norms (email vs. docs vs. social).
+</code></pre>
+<h2 id="the-five-principles-for-human-sounding-text-from-avoid-ai-writing">The five principles for human-sounding text (from avoid-ai-writing)</h2>
+<ol>
+<li><strong>Vary sentence length</strong> — mix short with long; fragments are fine.</li>
+<li><strong>Be concrete</strong> — numbers, names, dates, examples instead of vague claims.</li>
+<li><strong>Have a voice</strong> — use first person where appropriate, state preferences, show reactions.</li>
+<li><strong>Cut the neutrality</strong> — humans have opinions; if the piece should take a position, take it.</li>
+<li><strong>Earn your emphasis</strong> — don't <em>tell</em> the reader something is interesting; make it interesting.</li>
+</ol>
+<h2 id="formatting-discipline">Formatting discipline</h2>
+<ul>
+<li>Em dashes: avoid; use commas, periods, or parentheses.</li>
+<li>Bold: at most one bolded phrase per section, or none. If it matters, restructure the sentence to lead with it.</li>
+<li>Headings: sentence case, and only when they tell the reader something specific. Don't put 5 headers in 300 words.</li>
+<li>Lists: only for genuinely list-like content (steps, parameters, comparisons). Convert bullet-heavy sections to prose.</li>
+</ul>
+<h2 id="a-note-on-over-correction">A note on over-correction</h2>
+<p>Applying every rule at maximum strictness produces <em>new</em> uniformity — the very thing you're trying to avoid. Keep natural disfluency, idiosyncratic word choices, and uneven pacing. The goal is writing that sounds like a specific person wrote it, not writing that has been scrubbed clean.</p>
+<h2 id="anthropics-own-framing-for-prompting-claude-to-write-well">Anthropic's own framing (for prompting Claude to write well)</h2>
+<ul>
+<li>Be explicit and specific about audience, length, tone, and format up front — vague instructions produce generic output.</li>
+<li>Give positive and negative examples of the style you want.</li>
+<li>Add an uncertainty rule ("if unsure, say so") and ask for citations on factual claims; Claude responds well to explicit "don't guess" instructions.</li>
+<li>For long-document tasks, ask the model to quote the relevant parts first, then write — it cuts through noise.
+  (See https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices and Anthropic's interactive tutorial: https://github.com/anthropics/prompt-eng-interactive-tutorial)</li>
+</ul>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>writing-and-voice/how-to-write-and-sound.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

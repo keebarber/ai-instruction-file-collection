@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>anthropic-claude-code-best-practices · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#2563eb;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Coding agents</b> / anthropic-claude-code-best-practices.md</span>
+    <span class="right"><span class="chip b-condensed">Verbatim (condensed)</span><a class="raw" href="../../coding-agents/anthropic-claude-code-best-practices.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="best-practices-for-claude-code-anthropic-official">Best practices for Claude Code (Anthropic, official)</h1>
+<blockquote>
+<p>SOURCE: https://code.claude.com/docs/en/best-practices — Anthropic. Saved 2026-06-26 (lightly condensed; nav/links trimmed).
+The authoritative guidance from Anthropic on how to drive an agentic coding tool well. Most of it generalizes to any coding agent.</p>
+</blockquote>
+<p>Most best practices follow from one constraint: <strong>Claude's context window fills up fast, and performance degrades as it fills.</strong> The context window holds the entire conversation — every message, every file read, every command output. LLM performance degrades as it fills; Claude may "forget" earlier instructions or make more mistakes. Context is the most important resource to manage.</p>
+<h2 id="give-claude-a-way-to-verify-its-work">Give Claude a way to verify its work</h2>
+<p>Claude stops when the work <em>looks</em> done. Without a check it can run, "looks done" is the only signal, and you become the verification loop. Give Claude something that produces a pass/fail and the loop closes on its own: a test suite, a build exit code, a linter, a script that diffs output against a fixture, or a browser screenshot compared against a design.</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provide verification criteria</td>
+<td>"implement a function that validates email addresses"</td>
+<td>"write a validateEmail function. example test cases: user@example.com is true, invalid is false, user@.com is false. run the tests after implementing"</td>
+</tr>
+<tr>
+<td>Verify UI changes visually</td>
+<td>"make the dashboard look better"</td>
+<td>"[paste screenshot] implement this design. take a screenshot of the result and compare it to the original. list differences and fix them"</td>
+</tr>
+<tr>
+<td>Address root causes, not symptoms</td>
+<td>"the build is failing"</td>
+<td>"the build fails with this error: [paste error]. fix it and verify the build succeeds. address the root cause, don't suppress the error"</td>
+</tr>
+</tbody>
+</table>
+<p>How hard the check gates the stop: in one prompt (ask Claude to run it and iterate), across a session (a <code>/goal</code> condition re-checked every turn), as a deterministic gate (a Stop hook that blocks the turn until it passes), or by a second opinion (a verification subagent / fresh model that tries to refute the result, so the agent doing the work isn't grading itself).</p>
+<p>Have Claude show <strong>evidence</strong> rather than asserting success: the test output, the command it ran and what it returned, or a screenshot. Reviewing evidence is faster than re-running the verification yourself.</p>
+<h2 id="explore-first-then-plan-then-code">Explore first, then plan, then code</h2>
+<p>Letting Claude jump straight to coding can produce code that solves the wrong problem. Four phases:</p>
+<ol>
+<li><strong>Explore</strong> — plan mode; Claude reads files and answers questions without making changes.</li>
+<li><strong>Plan</strong> — ask for a detailed implementation plan; edit it before proceeding.</li>
+<li><strong>Implement</strong> — code, verifying against the plan.</li>
+<li><strong>Commit</strong> — descriptive message and a PR.</li>
+</ol>
+<p>Plan mode adds overhead. For small, clear-scope fixes (typo, log line, rename), skip it. Planning is most useful when the approach is uncertain, the change touches multiple files, or you're unfamiliar with the code. If you could describe the diff in one sentence, skip the plan.</p>
+<h2 id="provide-specific-context-in-your-prompts">Provide specific context in your prompts</h2>
+<p>The more precise the instructions, the fewer corrections you'll need.</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope the task</td>
+<td>"add tests for foo.py"</td>
+<td>"write a test for foo.py covering the edge case where the user is logged out. avoid mocks."</td>
+</tr>
+<tr>
+<td>Point to sources</td>
+<td>"why does ExecutionFactory have such a weird api?"</td>
+<td>"look through ExecutionFactory's git history and summarize how its api came to be"</td>
+</tr>
+<tr>
+<td>Reference existing patterns</td>
+<td>"add a calendar widget"</td>
+<td>"look at how existing widgets are implemented on the home page... HotDogWidget.php is a good example. follow the pattern... build from scratch without libraries other than the ones already used"</td>
+</tr>
+<tr>
+<td>Describe the symptom</td>
+<td>"fix the login bug"</td>
+<td>"users report that login fails after session timeout. check the auth flow in src/auth/, especially token refresh. write a failing test that reproduces the issue, then fix it"</td>
+</tr>
+</tbody>
+</table>
+<p>Provide rich content: reference files with <code>@</code>, paste images/screenshots, give URLs for docs, pipe data (<code>cat error.log | claude</code>), or tell Claude to fetch context itself.</p>
+<h2 id="write-an-effective-claudemd">Write an effective CLAUDE.md</h2>
+<p>CLAUDE.md is read at the start of every conversation. Keep it short and human-readable. Run <code>/init</code> for a starter, then refine. Only include things that apply broadly; use skills for sometimes-relevant knowledge.</p>
+<p>For each line, ask: <em>"Would removing this cause Claude to make mistakes?"</em> If not, cut it. <strong>Bloated CLAUDE.md files cause Claude to ignore your actual instructions.</strong></p>
+<table>
+<thead>
+<tr>
+<th>✅ Include</th>
+<th>❌ Exclude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bash commands Claude can't guess</td>
+<td>Anything Claude can figure out by reading code</td>
+</tr>
+<tr>
+<td>Code style rules that differ from defaults</td>
+<td>Standard language conventions Claude already knows</td>
+</tr>
+<tr>
+<td>Testing instructions and preferred test runners</td>
+<td>Detailed API documentation (link to docs instead)</td>
+</tr>
+<tr>
+<td>Repository etiquette (branch naming, PR conventions)</td>
+<td>Information that changes frequently</td>
+</tr>
+<tr>
+<td>Architectural decisions specific to your project</td>
+<td>Long explanations or tutorials</td>
+</tr>
+<tr>
+<td>Developer environment quirks (required env vars)</td>
+<td>File-by-file descriptions of the codebase</td>
+</tr>
+<tr>
+<td>Common gotchas or non-obvious behaviors</td>
+<td>Self-evident practices like "write clean code"</td>
+</tr>
+</tbody>
+</table>
+<p>If Claude keeps doing something you don't want despite a rule against it, the file is probably too long and the rule is getting lost. You can add emphasis ("IMPORTANT", "YOU MUST") to improve adherence. Check CLAUDE.md into git. It can import files with <code>@path/to/import</code> syntax. Locations: <code>~/.claude/CLAUDE.md</code> (all sessions), <code>./CLAUDE.md</code> (shared, checked into git), <code>./CLAUDE.local.md</code> (personal, gitignored), plus parent/child directories in monorepos.</p>
+<p>Example:</p>
+<pre><code class="language-markdown"># Code style
+- Use ES modules (import/export) syntax, not CommonJS (require)
+- Destructure imports when possible (eg. import { foo } from 'bar')
+
+# Workflow
+- Be sure to typecheck when you're done making a series of code changes
+- Prefer running single tests, and not the whole test suite, for performance
+</code></pre>
+<h2 id="configure-your-environment">Configure your environment</h2>
+<ul>
+<li><strong>Permissions</strong>: reduce interruptions with auto mode (a classifier blocks risky commands), permission allowlists (<code>npm run lint</code>, <code>git commit</code>), or sandboxing (OS-level isolation).</li>
+<li><strong>CLI tools</strong>: tell Claude to use <code>gh</code>, <code>aws</code>, <code>gcloud</code>, <code>sentry-cli</code>. CLI tools are the most context-efficient way to hit external services.</li>
+<li><strong>MCP servers</strong>: connect Notion, Figma, databases, issue trackers.</li>
+<li><strong>Hooks</strong>: for actions that must happen every time with zero exceptions (deterministic, unlike advisory CLAUDE.md).</li>
+<li><strong>Skills</strong>: <code>SKILL.md</code> files in <code>.claude/skills/</code> give domain knowledge and reusable workflows, loaded on demand.</li>
+<li><strong>Subagents</strong>: specialized assistants in <code>.claude/agents/</code> with their own context and tool allowlist.</li>
+<li><strong>Plugins</strong>: bundle skills, hooks, subagents, MCP servers into one installable unit.</li>
+</ul>
+<h2 id="communicate-effectively">Communicate effectively</h2>
+<ul>
+<li><strong>Ask codebase questions</strong> the way you'd ask a senior engineer ("How does logging work?", "What edge cases does X handle?"). No special prompting needed.</li>
+<li><strong>Let Claude interview you</strong> for larger features. Start minimal and ask Claude to interview you using the AskUserQuestion tool, covering implementation, UI/UX, edge cases, and tradeoffs, then write a complete spec to <code>SPEC.md</code>. Start a fresh session to execute it. The most useful specs name the files and interfaces involved, state what's out of scope, and end with an end-to-end verification step.</li>
+</ul>
+<h2 id="manage-your-session">Manage your session</h2>
+<ul>
+<li><strong>Course-correct early and often.</strong> <code>Esc</code> to stop mid-action (context preserved), <code>Esc+Esc</code> / <code>/rewind</code> to restore earlier state, "undo that," <code>/clear</code> to reset between unrelated tasks. If you've corrected Claude more than twice on the same issue, the context is polluted — <code>/clear</code> and restart with a better prompt.</li>
+<li><strong>Manage context aggressively.</strong> <code>/clear</code> between unrelated tasks; <code>/compact &lt;instructions&gt;</code> for partial summarization.</li>
+<li><strong>Use subagents for investigation.</strong> They explore in a separate context and report back summaries, keeping your main conversation clean.</li>
+<li><strong>Rewind with checkpoints.</strong> Every prompt creates a checkpoint (tracks Claude's changes only — not a git replacement).</li>
+</ul>
+<h2 id="avoid-common-failure-patterns">Avoid common failure patterns</h2>
+<ul>
+<li><strong>The kitchen sink session.</strong> Mixing unrelated tasks fills context with irrelevant info. → <code>/clear</code> between tasks.</li>
+<li><strong>Correcting over and over.</strong> Context pollutes with failed approaches. → After two failed corrections, <code>/clear</code> and write a better prompt.</li>
+<li><strong>The over-specified CLAUDE.md.</strong> Too long → Claude ignores half of it. → Ruthlessly prune; convert rules to hooks.</li>
+<li><strong>The trust-then-verify gap.</strong> Plausible-looking code that misses edge cases. → Always provide verification. If you can't verify it, don't ship it.</li>
+<li><strong>The infinite exploration.</strong> Unscoped "investigate" reads hundreds of files. → Scope narrowly or use subagents.</li>
+</ul>
+<h2 id="develop-your-intuition">Develop your intuition</h2>
+<p>These patterns are starting points, not rules. Sometimes you should let context accumulate, skip planning, or use a vague prompt on purpose. Pay attention to what works: when Claude produces great output, notice the prompt structure, context, and mode you used; when it struggles, ask whether the context was too noisy, the prompt too vague, or the task too big for one pass.</p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>coding-agents/anthropic-claude-code-best-practices.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

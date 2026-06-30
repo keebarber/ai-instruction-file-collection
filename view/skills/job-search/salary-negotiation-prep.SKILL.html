@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>salary-negotiation-prep.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / salary-negotiation-prep.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim · MIT</span><a class="raw" href="../../../skills/job-search/salary-negotiation-prep.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: Paramchoudhary/ResumeSkills — https://github.com/Paramchoudhary/ResumeSkills/blob/main/skills/salary-negotiation-prep/SKILL.md
+Retrieved 2026-06-26, verbatim. License: MIT.
+-->
+<hr />
+<p>name: salary-negotiation-prep
+description: Research market rates, build negotiation strategy, and create counter-offer scripts</p>
+<hr />
+<h1 id="salary-negotiation-prep">Salary Negotiation Prep</h1>
+<h2 id="when-to-use-this-skill">When to Use This Skill</h2>
+<p>Use when the user wants to: negotiate a job offer or salary; research market rates; create a counter-offer strategy; understand total compensation; mentions "salary negotiation", "negotiate offer", "counter offer", "compensation", "how much should I ask for".</p>
+<h2 id="the-negotiation-mindset">The Negotiation Mindset</h2>
+<ol>
+<li>Negotiation is expected — companies budget for it.</li>
+<li>84% of employers expect candidates to negotiate.</li>
+<li>Not negotiating leaves $500K-$1M on the table over a career.</li>
+<li>The goal is win-win, not adversarial.</li>
+</ol>
+<p><strong>What you're really negotiating:</strong> base salary, signing bonus, annual bonus/commission, equity (options, RSUs), benefits (401k match, insurance), perks (vacation, remote, professional development), start date, title.</p>
+<h2 id="research-phase">Research Phase</h2>
+<h3 id="step-1-determine-market-rate">Step 1: Determine Market Rate</h3>
+<p>Sources: Levels.fyi (best for tech), Glassdoor, LinkedIn Salary, Blind, PayScale, Salary.com, H1B salary data.
+Build a range: Low (25th), Target (50th), High (75th), Stretch (90th percentile).</p>
+<h3 id="step-2-know-your-value">Step 2: Know Your Value</h3>
+<p><strong>Increases worth:</strong> years of relevant experience, specialized/rare skills, track record of results, in-demand certifications, competing offers, employee referral, market demand.
+<strong>May limit:</strong> entry level/career change, less experience, skill gaps, location arbitrage.</p>
+<h3 id="step-3-calculate-total-compensation">Step 3: Calculate Total Compensation</h3>
+<p><strong>Total Comp = Base + Bonus + Equity + Benefits</strong></p>
+<pre><code>Base $150,000 + Target Bonus 15% ($22,500) + RSU 4-yr $200K ($50K/yr)
++ 401k Match 4% ($6,000) + Benefits ~$15,000 = $243,500 total annual comp
+</code></pre>
+<p>Equity terms: RSUs (real shares, taxed at vest); Options (right to buy at strike); Vesting (typically 4-year, 1-year cliff); Refresh grants (annual).</p>
+<h2 id="negotiation-strategy">Negotiation Strategy</h2>
+<p><strong>Best time:</strong> after you have a written offer, before you sign.
+Timeline: verbal offer → ask for written → ask for time to review → research 24-48h → counter → discussion → final agreement in writing.</p>
+<h3 id="the-counter-offer-framework">The Counter-Offer Framework</h3>
+<ol>
+<li>Express enthusiasm  2. Reinforce your value  3. Make specific ask  4. Provide justification  5. Open discussion</li>
+</ol>
+<h3 id="counter-offer-email-template">Counter-Offer Email Template</h3>
+<pre><code>Subject: [Your Name] - Offer Discussion
+
+Hi [Recruiter/Hiring Manager],
+
+Thank you so much for the offer to join [Company] as [Title]. I'm very excited about the opportunity to [specific thing]. After speaking with the team and learning more about [something specific], I'm confident this is the right fit.
+
+I've reviewed the offer and wanted to discuss compensation. Based on my research of the market and my [X years of experience / specific skill / competing offer], I was hoping we could discuss a base salary of $[Your Ask] rather than $[Their Offer]. [Optional justification.]
+
+I'm flexible and open to discussing other elements of the package as well. Would you have time for a quick call?
+
+Thank you again — I'm looking forward to finding a package that works for both of us.
+
+Best, [Your Name]
+</code></pre>
+<h3 id="counter-offer-call-script">Counter-Offer Call Script</h3>
+<blockquote>
+<p>"Hi [Name], thanks for making time. I'm really excited about this — [specific reason]. I've reviewed the offer and want to discuss compensation. Based on my market research and [X years / key accomplishment / competing offer], I was hoping for a base closer to $[Amount]. Is there flexibility there?"
+[LISTEN]
+If pushed back: "I understand there are constraints. I'm flexible — could we look at signing bonus, equity, or [other element] to bridge the gap?"</p>
+</blockquote>
+<h2 id="common-scenarios">Common Scenarios</h2>
+<ul>
+<li><strong>First offer is low:</strong> don't accept immediately; counter with research-backed number.</li>
+<li><strong>They ask your expectations first:</strong> "I'm flexible and focused on the right fit. What's the range you've budgeted?"</li>
+<li><strong>They won't budge on base:</strong> negotiate signing bonus, equity, earlier review, vacation, remote, dev budget, title, relocation, start date.</li>
+<li><strong>You have competing offers:</strong> only mention if true; frame as problem-solving, not a threat.</li>
+<li><strong>They ask current salary (illegal in many states):</strong> redirect to value + market rate.</li>
+</ul>
+<h2 id="tactics">Tactics</h2>
+<p><strong>Do:</strong> always negotiate respectfully; get the offer in writing first; research thoroughly; be specific with numbers; express genuine enthusiasm; give them a way to say yes; consider total comp; be patient; get final agreement in writing.
+<strong>Don't:</strong> accept on the spot; give salary history (if not legally required); make ultimatums; lie about competing offers; be aggressive; negotiate just to negotiate; accept verbal promises; burn bridges.</p>
+<h2 id="output-format">Output Format</h2>
+<pre><code class="language-markdown"># SALARY NEGOTIATION STRATEGY
+## Market Research Summary  (role, location, level; 25/50/75/90th percentile; sources)
+## Their Offer              (base, bonus, equity, signing, total year 1)
+## Your Counter             (component, ask, justification)
+## Counter-Offer Script     (email or call, customized)
+## If They Push Back        (Plan B elements + walk-away point)
+## Key Talking Points
+## Questions to Clarify      (equity vesting? bonus guaranteed? review cycle?)
+</code></pre>
+<h2 id="implementation-checklist">Implementation Checklist</h2>
+<ol>
+<li>Research market rate from 3+ sources</li>
+<li>Calculate total compensation (not just base)</li>
+<li>Identify your priorities</li>
+<li>Determine walk-away point</li>
+<li>Prepare counter-offer with justification</li>
+<li>Write or practice negotiation script</li>
+<li>Plan for pushback scenarios</li>
+<li>Get agreement in writing</li>
+<li>Review final offer letter carefully</li>
+<li>Sign</li>
+</ol>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/job-search/salary-negotiation-prep.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>how-to-write-code-rules.cheatsheet · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#2563eb;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Coding agents</b> / how-to-write-code-rules.cheatsheet.md</span>
+    <span class="right"><span class="chip b-distilled">Distilled</span><a class="raw" href="../../coding-agents/how-to-write-code-rules.cheatsheet.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="how-an-ai-should-write-code-rules-cheat-sheet">How an AI should write code — rules cheat-sheet</h1>
+<blockquote>
+<p>A distilled, paste-ready set of coding rules for a CLAUDE.md / AGENTS.md / .cursorrules. Synthesized from Anthropic's Claude Code best practices, the AGENTS.md ecosystem conventions, and recurring rules across the most-starred .cursorrules collections (PatrickJS/awesome-cursorrules) and "rules for AI" guides.
+Use these as a menu — keep only the lines that would actually change the agent's behavior on YOUR codebase, and delete the rest. A bloated rules file gets ignored (see <code>humanlayer-writing-a-good-CLAUDE-md.md</code>).</p>
+</blockquote>
+<h2 id="verify-your-work-the-highest-value-rule">Verify-your-work (the highest-value rule)</h2>
+<pre><code>- After a series of changes, run the build, typecheck, linter, and tests. Don't report done until they pass.
+- Show evidence, not assertions: the command you ran and its output, or a screenshot of the result.
+- Fix the root cause, not the symptom. Never suppress or silence an error to make a check pass.
+- Add or update tests for the code you change, even if nobody asked.
+- Prefer running the single relevant test over the whole suite while iterating.
+</code></pre>
+<h2 id="before-writing-code">Before writing code</h2>
+<pre><code>- For anything non-trivial, explore and plan before editing. Read the relevant files first.
+- Match existing patterns. Find a similar feature in the codebase and follow its structure, naming, and libraries.
+- Don't add a new dependency without checking what's already used. Ask before adding production dependencies.
+- If the approach is unclear or touches many files, write a short plan (or SPEC.md) and confirm before implementing.
+</code></pre>
+<h2 id="while-writing-code">While writing code</h2>
+<pre><code>- Make the smallest change that solves the problem. Don't refactor unrelated code in the same pass.
+- Don't reformat files you aren't changing. Keep diffs focused and reviewable.
+- Preserve existing public APIs and behavior unless the task is to change them.
+- No placeholder/stub code, no TODOs left behind, no commented-out blocks. Finish the change.
+- Handle errors and edge cases explicitly; don't swallow exceptions.
+- Don't hardcode secrets. Read config/env the way the rest of the codebase does.
+- Comment the &quot;why&quot;, not the &quot;what&quot;. Don't narrate obvious code.
+- Prefer clarity over cleverness. Readable beats short.
+</code></pre>
+<h2 id="things-to-avoid-common-ai-coding-failure-modes">Things to avoid (common AI coding failure modes)</h2>
+<pre><code>- Don't invent APIs, file paths, env vars, or library functions. If unsure, check the source or say so.
+- Don't delete or weaken tests to make them pass.
+- Don't introduce a new framework/library/pattern when the codebase already has one for the job.
+- Don't leave the build broken. If you can't finish, say what's incomplete and why.
+- Don't claim something works without running it.
+- Avoid over-engineering: no speculative abstraction, defensive code for impossible cases, or tests for cases that can't happen.
+</code></pre>
+<h2 id="after-writing-code">After writing code</h2>
+<pre><code>- Run the project's checks (build, lint, typecheck, test) and report results.
+- Summarize what changed and why, list the files touched, and call out anything risky or out of scope.
+- Use conventional commit messages / the repo's PR etiquette (branch naming, title format).
+</code></pre>
+<h2 id="project-facts-the-agent-cant-guess-fill-these-in">Project facts the agent can't guess (fill these in)</h2>
+<pre><code>- Package manager + exact commands: install / dev / build / test / lint / typecheck
+- Language/runtime versions and any required env vars
+- Where things live: apps, shared packages, entry points (a map of the repo)
+- Test framework and how to run a single test
+- Non-obvious gotchas, required setup steps, and &quot;do not touch&quot; areas
+</code></pre>
+<h2 id="anthropics-includeexclude-guide-for-a-coding-rules-file">Anthropic's include/exclude guide for a coding rules file</h2>
+<table>
+<thead>
+<tr>
+<th>Include</th>
+<th>Exclude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bash commands the agent can't guess</td>
+<td>Anything it can figure out by reading the code</td>
+</tr>
+<tr>
+<td>Code style rules that differ from language defaults</td>
+<td>Standard conventions the model already knows</td>
+</tr>
+<tr>
+<td>Test instructions and the preferred runner</td>
+<td>Detailed API docs (link instead)</td>
+</tr>
+<tr>
+<td>Repo etiquette (branches, PR format)</td>
+<td>Info that changes frequently</td>
+</tr>
+<tr>
+<td>Architecture decisions specific to your project</td>
+<td>File-by-file descriptions of the codebase</td>
+</tr>
+<tr>
+<td>Env quirks (required env vars)</td>
+<td>Self-evident advice like "write clean code"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="an-adversarial-review-step-for-autonomous-runs">An adversarial review step (for autonomous runs)</h2>
+<pre><code>- Before treating work as done, have a fresh-context reviewer (subagent) check the diff against the plan:
+  every requirement implemented, listed edge cases tested, nothing out of scope changed.
+- Tell the reviewer to flag only gaps that affect correctness or stated requirements — not style preferences —
+  to avoid over-engineering.
+</code></pre>
+<p>Sources: https://code.claude.com/docs/en/best-practices · https://agents.md/ · https://github.com/PatrickJS/awesome-cursorrules</p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>coding-agents/how-to-write-code-rules.cheatsheet.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

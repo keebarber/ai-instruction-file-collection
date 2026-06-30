@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>candidate-profile · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#0369a1;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Career context</b> / candidate-profile.md</span>
+    <span class="right"><span class="chip b-authored">Authored</span><a class="raw" href="../../career-context/candidate-profile.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+============================================================
+CANDIDATE PROFILE — agent context file
+Keep this file current. Point any agent at it before asking it to
+draft a resume bullet, cover letter, LinkedIn message, application
+answer, or interview prep. Example: "Read candidate-profile.md, then
+draft a cover letter for the JD I'm pasting below."
+Populated from Keenan's resume on 2026-06-26. Lines marked [NEED: ...]
+are things the resume didn't cover — fill them in when you can.
+============================================================
+-->
+
+<h1 id="candidate-profile-keenan-barber">Candidate Profile — Keenan Barber</h1>
+<h2 id="agent-instructions-how-to-use-this-file-read-first">Agent instructions — how to use this file (read first)</h2>
+<p>You are helping me with a job search. This file is the source of truth about
+me. When you draft anything, follow these rules:</p>
+<ul>
+<li><strong>Use only what's in this file.</strong> Do not invent jobs, titles, metrics, skills,
+  or credentials. If a draft needs a fact I haven't filled in, leave a clearly
+  marked <code>[NEED: ...]</code> placeholder instead of guessing.</li>
+<li><strong>Never inflate.</strong> Don't upgrade "familiar with" to "expert in." Respect the
+  skill tiers below and the "Things to NOT claim" section.</li>
+<li><strong>Match my voice</strong> (see "Voice &amp; drafting preferences"). Write plainly. Avoid
+  AI-slop words and patterns — see <code>../writing-and-voice/words-and-phrases-to-avoid.cheatsheet.md</code>.</li>
+<li><strong>Tailor to the target.</strong> When I paste a job description, map my experience to
+  <em>their</em> language and priorities; lead with the most relevant 2–3 things.</li>
+<li><strong>Ask before assuming</strong> on anything that changes the substance (seniority
+  framing, salary numbers, reason for leaving). One batched round of questions, then go.</li>
+<li><strong>Default outputs are concise.</strong> No filler openers/closers. Specifics over adjectives.</li>
+</ul>
+<hr />
+<h2 id="1-snapshot-the-10-second-version">1. Snapshot (the 10-second version)</h2>
+<ul>
+<li><strong>Name:</strong> Keenan Barber</li>
+<li><strong>Current / most recent title:</strong> Senior Software Engineer (Janus Health, through Feb 2026)</li>
+<li><strong>Based in:</strong> Holland, MI · <strong>Open to:</strong> Remote (confirm onsite/hybrid/relocation appetite — [NEED])</li>
+<li><strong>Work authorization:</strong> [NEED: e.g., US citizen / no sponsorship needed]</li>
+<li><strong>One-line pitch:</strong> Full-stack TypeScript/Node engineer (7+ yrs, mostly healthcare) who builds reliable automation and internal tools — and works fluently with AI coding agents without sacrificing test coverage.</li>
+<li><strong>Target roles:</strong> Senior Software Engineer · Full-Stack Engineer (TypeScript/Node) · [consider: AI-tooling / developer-productivity / forward-deployed eng — confirm appetite]</li>
+<li><strong>Target level:</strong> Senior IC (open to lead? — [NEED])</li>
+<li><strong>Industries of interest:</strong> Healthtech/health systems (deep domain), plus [NEED: others you're open to]</li>
+</ul>
+<h2 id="2-contact-links">2. Contact &amp; links</h2>
+<ul>
+<li><strong>Email:</strong> keenan.c.barber@gmail.com</li>
+<li><strong>Phone:</strong> 616-610-3273</li>
+<li><strong>LinkedIn:</strong> [NEED: url]</li>
+<li><strong>Portfolio / website:</strong> [NEED: url]</li>
+<li><strong>GitHub / GitLab:</strong> [NEED: url — your AI automation projects would be good to show here]</li>
+<li><strong>Other (writing, talks, etc.):</strong> [NEED]</li>
+</ul>
+<h2 id="3-search-status-logistics">3. Search status &amp; logistics</h2>
+<ul>
+<li><strong>Actively looking / casually open:</strong> [NEED — last role ended Feb 2026]</li>
+<li><strong>Timeline / urgency:</strong> [NEED]</li>
+<li><strong>Notice period / availability to start:</strong> [NEED — likely immediate]</li>
+<li><strong>Compensation expectations:</strong> [NEED: base range / total comp / your floor]</li>
+<li><strong>Work setup needs:</strong> Remote (confirm any onsite/travel limits — [NEED])</li>
+<li><strong>Deal-breakers:</strong> [NEED]</li>
+<li><strong>Companies I'm targeting / avoiding:</strong> [NEED]</li>
+</ul>
+<h2 id="4-positioning-summary">4. Positioning &amp; summary</h2>
+<ul>
+<li><strong>30-second elevator pitch:</strong> I'm a full-stack engineer with 7+ years in TypeScript and Node.js, mostly in healthcare. I'm a hands-on builder — I've migrated legacy systems to modern API-based architectures, shipped internal tools for non-technical teams, and kept automation pipelines running across multiple hospital systems. I also work AI coding agents into my daily workflow to move faster without giving up code quality or test coverage.</li>
+<li><strong>Professional summary (resume top):</strong> Full-stack engineer with 7+ years building web platforms and automation tools in TypeScript and Node.js, mostly in healthcare. Hands-on builder: migrated legacy systems to modern API-based architectures, shipped internal tools for non-technical teams, and maintained automation pipelines running across multiple hospital systems. Fluent with modern AI dev tools (Claude, Cursor), integrated into a daily workflow without sacrificing code quality or test coverage. Cares about reliable, well-tested production software and being a dependable teammate.</li>
+<li><strong>Longer bio / "tell me about yourself":</strong> [Use the pitch above, then add the arc:] Started in front-end/WordPress work (Elexicon), moved into healthcare automation at Olive AI where I built revenue-cycle pipelines and cut more than $1M/year in vendor costs, then went to Janus Health as a Senior Engineer migrating prior-auth workflows off a legacy monolith. Over the last year I've gone deep on AI-assisted development — daily agent use plus building my own Claude-API automation. [NEED: add what you want next and why.]</li>
+<li><strong>What makes me different:</strong>
+  1. Real, daily AI-agent engineering experience (not just "I've tried Copilot") — including model routing, per-project rules files, and shipping Claude-API automation. Can bring a team up to speed.
+  2. Deep healthcare/revenue-cycle domain knowledge across multiple hospital systems.
+  3. Track record of measurable cost/perf wins ($1M+/yr saved; 50%+ load-time cuts) and of building tools that let non-technical teams self-serve.</li>
+<li><strong>Career arc / why now:</strong> [NEED: the throughline + what you're optimizing for next.]</li>
+</ul>
+<h2 id="5-skills">5. Skills</h2>
+<blockquote>
+<p><em>Tiers below are INFERRED from the resume — confirm/adjust. This is what stops an agent from overselling you.</em></p>
+</blockquote>
+<ul>
+<li><strong>Expert / core (can lead, teach, go deep):</strong> TypeScript, Node.js, JavaScript (ES6+), REST API design, automation pipeline design, healthcare revenue-cycle / prior-auth domain. [confirm]</li>
+<li><strong>Strong / proficient (use regularly, independent):</strong> React, PostgreSQL / SQL, Sequelize, testing (Jest, Playwright, Selenium), Docker, CI/CD (GitHub Actions, Jenkins), AI-assisted development (Claude, Claude Code, Cursor), system design / microservices. [confirm]</li>
+<li><strong>Working knowledge (can do with support / ramping):</strong> GraphQL, AWS, Prisma, TypeORM, PHP / WordPress (earlier career). [confirm — move any of these up/down]</li>
+<li><strong>Tools &amp; technologies:</strong> TypeScript, JavaScript, Node.js, React, GraphQL, SQL, PHP, HTML5, CSS3, PostgreSQL, Sequelize, Jest, Selenium, Playwright, Docker, AWS, GitHub Actions, Jenkins, Git, Jira, Claude/Claude Code, Cursor, Claude API.</li>
+<li><strong>Methods / domains:</strong> REST APIs, microservices, system design, scalable automation, software infrastructure, app-health monitoring, Agile.</li>
+<li><strong>Soft / leadership skills (with proof):</strong> enabling non-technical teams (built self-serve tools for Customer Success); upskilling teammates on effective AI use; dependable/low-drama teammate. [add more — [NEED]]</li>
+<li><strong>Certifications &amp; licenses:</strong> [NEED / none]</li>
+<li><strong>Languages (spoken):</strong> [NEED — English; others?]</li>
+</ul>
+<h2 id="6-experience">6. Experience</h2>
+<blockquote>
+<p><em>Raw material — the agent rewrites/trims per application.</em></p>
+</blockquote>
+<h3 id="janus-health-senior-software-engineer">Janus Health — Senior Software Engineer</h3>
+<ul>
+<li><strong>Dates:</strong> Apr 2023 – Feb 2026 · <strong>Location:</strong> Remote</li>
+<li><strong>What the team/company did:</strong> Healthcare prior-authorization platform / automation across hospital systems.</li>
+<li><strong>My scope / responsibilities:</strong> Backend services, internal APIs, automation infrastructure, internal tooling.</li>
+<li><strong>Accomplishments:</strong></li>
+<li>Helped migrate prior-authorization workflows from a legacy monolith to a new API-based system — rebuilt supporting services: database models (Sequelize), API routing, payload validation, metric reporting, and the related test coverage.</li>
+<li>Built automation services and internal APIs that process prior-auth data across multiple hospital systems.</li>
+<li>Developed internal web tools that let the Customer Success team safely update records without engineering support.</li>
+<li>Updated a production Chrome extension to meet Manifest V3 requirements; improved stability for concurrent automation runs using WebSockets.</li>
+<li>Supported the automation build team and built infrastructure to monitor application health.</li>
+<li><strong>Tech / tools used:</strong> TypeScript, Node.js, Sequelize, REST APIs, WebSockets, Chrome extension (MV3).</li>
+<li><strong>Reason for leaving:</strong> [NEED — likely "tell me why you left" question; keep it short and neutral.]</li>
+</ul>
+<h3 id="olive-ai-software-engineer">Olive AI — Software Engineer</h3>
+<ul>
+<li><strong>Dates:</strong> Aug 2020 – Feb 2023 · <strong>Location:</strong> [NEED / Remote]</li>
+<li><strong>What the team/company did:</strong> Healthcare automation (revenue cycle).</li>
+<li><strong>My scope / responsibilities:</strong> Automation pipelines, reusable/productized automation, shared data architecture.</li>
+<li><strong>Accomplishments:</strong></li>
+<li>Built automation pipelines handling revenue-cycle tasks (claim status checks, form submission) across multiple healthcare systems.</li>
+<li>Designed and built a reusable, productized version of the claim-status automation used throughout the org.</li>
+<li>Contributed to the architecture of a reusable data structure that standardized how internal services and external APIs exchanged data.</li>
+<li><strong>Reduced vendor and resource costs by more than $1M/year</strong> by finding unnecessary API usage and redesigning the automation workflow to cut external calls.</li>
+<li><strong>Tech / tools used:</strong> TypeScript/Node.js, automation tooling, external healthcare APIs.</li>
+<li><strong>Reason for leaving:</strong> [NEED]</li>
+</ul>
+<h3 id="elexicon-valorous-circle-front-end-web-developer">Elexicon / Valorous Circle — Front End Web Developer</h3>
+<ul>
+<li><strong>Dates:</strong> Feb 2018 – Mar 2020 · <strong>Location:</strong> [NEED]</li>
+<li><strong>What the team/company did:</strong> Web agency / client websites.</li>
+<li><strong>My scope / responsibilities:</strong> Custom WordPress builds, performance, hosting/support.</li>
+<li><strong>Accomplishments:</strong></li>
+<li>Built custom WordPress themes and plugins (PHP, JavaScript) focused on performance and usability.</li>
+<li>Rebuilt a global enterprise website and <strong>cut page load times by 50%+</strong> via caching and media optimization.</li>
+<li>Developed a content-prioritization algorithm to reduce server load during high-traffic periods.</li>
+<li>Managed hosting and ongoing support for 100+ client sites.</li>
+<li><strong>Tech / tools used:</strong> PHP, JavaScript, WordPress, caching/CDN.</li>
+<li><strong>Reason for leaving:</strong> [NEED]</li>
+</ul>
+<h3 id="capability-highlight-ai-assisted-development-differentiator">Capability highlight — AI-assisted development (differentiator)</h3>
+<blockquote>
+<p><em>Not a job, but a strong selling point. Pull from here for AI-focused roles or any "how do you use AI?" question.</em>
+- Build with AI coding agents daily — primarily Claude and Claude Code, Cursor as needed — for writing, refactoring, reviewing, and debugging production TypeScript/Node. ~1 year hands-on, daily.
+- Set up <strong>model routing</strong> so the tool fits the task: a fast, cheaper model for scaffolding/boilerplate, a stronger one for harder design and debugging — keeps cost down without losing quality where it matters.
+- Use per-project rules files (<code>.cursorrules</code> and similar) to pin generated code to a codebase's conventions, patterns, and test style, so output lands closer to mergeable.
+- Integrated the <strong>Claude API</strong> into my own automation projects — classification and scoring tasks running on scheduled GitHub Actions — which is where most of my prompt-engineering and agentic-workflow experience comes from.
+- Comfortable bringing a team up to speed: where AI saves time, where it doesn't, and how to keep it from quietly eroding code quality or test coverage.</p>
+</blockquote>
+<h2 id="7-story-bank-star">7. Story bank (STAR)</h2>
+<blockquote>
+<p><em>Drafted from your resume — fill the [bracketed] gaps with specifics (numbers, names, what was at stake).</em>
+- <strong>Biggest measurable impact — cost reduction (Olive AI):</strong>
+  - S: Automation workflows were making heavy external API calls across healthcare systems. · T: Cut vendor/resource cost without breaking automation. · A: Identified unnecessary API usage and redesigned parts of the workflow to reduce external calls. · R: <strong>Reduced costs by $1M+/year.</strong> [add timeframe + how you found it]
+- <strong>System migration / design (Janus):</strong>
+  - S: Prior-auth workflows lived in a legacy monolith. · T: Move them to a new API-based system. · A: Rebuilt DB models (Sequelize), API routing, payload validation, metric reporting, and test coverage. · R: [NEED: outcome — reliability, velocity, what it unblocked]
+- <strong>Performance win (Elexicon):</strong>
+  - S: A global enterprise site loaded slowly. · T: Speed it up. · A: Caching improvements + media optimization (full rebuild). · R: <strong>50%+ faster page loads.</strong>
+- <strong>Enabling a non-technical team (Janus):</strong>
+  - S: Customer Success needed record changes that required engineering every time. · T: Let them self-serve safely. · A: Built internal web tools with guardrails. · R: [NEED: eng hours saved / turnaround time]
+- <strong>AI leadership / upskilling:</strong>
+  - S: [team context — NEED] · T: Adopt AI tooling without eroding quality. · A: Model routing, per-project rules files, taught teammates where it helps/hurts. · R: [NEED: outcome]
+- <strong>Failure / lesson:</strong> [NEED — pick one and frame the lesson.]
+- <strong>Conflict / hard feedback:</strong> [NEED]</p>
+</blockquote>
+<h2 id="8-education-development">8. Education &amp; development</h2>
+<ul>
+<li><strong>B.S. Statistics — Grand Valley State University — Apr 2014</strong></li>
+<li><strong>Ongoing learning:</strong> AI-assisted development / agentic workflows (daily, last ~1 yr). [add courses/certs if any]</li>
+</ul>
+<h2 id="9-limitations-gaps-guardrails">9. Limitations, gaps &amp; guardrails</h2>
+<blockquote>
+<p><em>Hard constraints — keeps drafts truthful and protects you in interviews.</em>
+- <strong>Things to NOT claim:</strong> Don't list GraphQL/AWS/Prisma/TypeORM as deep expertise — they're working-knowledge/familiarity. Don't claim formal "tech lead"/management titles unless confirmed.
+- <strong>Skill gaps I'm honest about:</strong> [NEED — e.g., cloud/infra depth, frontend frameworks beyond React. Add framing.]
+- <strong>Employment gaps / explanations:</strong> Last role ended Feb 2026 — [NEED: framing for the current search period.]
+- <strong>Career pivots to explain:</strong> Front-end/WordPress → healthcare backend automation → AI-assisted engineering. [confirm framing]
+- <strong>Topics to steer around / not volunteer:</strong> [NEED]
+- <strong>Weaknesses (with growth framing):</strong> [NEED]
+- <strong>Accommodations / constraints:</strong> [NEED / none]</p>
+</blockquote>
+<h2 id="10-voice-drafting-preferences">10. Voice &amp; drafting preferences</h2>
+<ul>
+<li><strong>Tone:</strong> Plain, direct, low-ego; "dependable builder," not buzzwordy. [confirm]</li>
+<li><strong>Formality by channel:</strong> [NEED — cover letter vs. LinkedIn DM vs. recruiter email]</li>
+<li><strong>Length defaults:</strong> Cover letters ≤ ~250 words; outreach ≤ ~5 sentences. [confirm]</li>
+<li><strong>First person / pronouns:</strong> I / [NEED pronouns]</li>
+<li><strong>Words &amp; phrases to avoid:</strong> Apply <code>../writing-and-voice/words-and-phrases-to-avoid.cheatsheet.md</code>. No "leverage," "passionate," "synergy," em-dash overuse, or generic openers.</li>
+<li><strong>Formatting:</strong> Prose over bullets in letters; bullets fine for resumes. No emoji in professional materials. [confirm]</li>
+<li><strong>Sign-off / signature:</strong> [NEED]</li>
+<li><strong>Theme to carry through:</strong> reliability + AI fluency without sacrificing quality.</li>
+</ul>
+<h2 id="11-common-questions-my-answers">11. Common questions — my answers</h2>
+<blockquote>
+<p><em>Pre-write the recurring ones so the agent adapts instead of re-asking. Fill in over time.</em>
+- <strong>"Tell me about yourself":</strong> Use the bio in §4.
+- <strong>"Why are you looking / leaving?":</strong> [NEED]
+- <strong>"Why this company / role?":</strong> Template — agent fills company specifics from the JD; tie to healthcare domain and/or AI tooling where relevant.
+- <strong>"Greatest strengths":</strong> Reliable shipping with test coverage; turning vague automation problems into measurable wins; practical AI-tooling judgment. (Tie to §7 stories.)
+- <strong>"Greatest weakness":</strong> [NEED]
+- <strong>"Career goals":</strong> [NEED]
+- <strong>"Salary expectations":</strong> [NEED — scripted answer]
+- <strong>"Walk me through your resume":</strong> Elexicon → Olive AI → Janus Health, ending on the AI-development thread.
+- <strong>"Questions for us":</strong> [NEED — your go-to questions]</p>
+</blockquote>
+<h2 id="12-target-fit-notes-optional-per-opportunity">12. Target-fit notes (optional, per opportunity)</h2>
+<ul>
+<li><strong>[Company / role]:</strong> why it fits, 3 things to emphasize, referral, status.</li>
+</ul>
+<hr />
+<p><em>Last updated: 2026-06-26 (populated from resume)</em> · <em>Keep tiers honest, keep metrics specific, prune what's stale.</em></p>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>career-context/candidate-profile.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

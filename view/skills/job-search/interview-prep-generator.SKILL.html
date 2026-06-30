@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>interview-prep-generator.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / interview-prep-generator.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim · MIT</span><a class="raw" href="../../../skills/job-search/interview-prep-generator.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: Paramchoudhary/ResumeSkills — https://github.com/Paramchoudhary/ResumeSkills/blob/main/skills/interview-prep-generator/SKILL.md
+Retrieved 2026-06-26, verbatim. License: MIT.
+Pairs with: ../../career-context/candidate-profile.md (its §7 STAR bank is the input this skill expands).
+-->
+<hr />
+<p>name: interview-prep-generator
+description: Generate STAR stories, practice questions, and talking points from resume</p>
+<hr />
+<h1 id="interview-prep-generator">Interview Prep Generator</h1>
+<h2 id="when-to-use-this-skill">When to Use This Skill</h2>
+<p>Use this skill when the user wants to:
+- Prepare for a job interview
+- Practice answering interview questions
+- Create STAR stories from their experience
+- Anticipate questions for a specific role
+- Mentions: "interview prep", "prepare for interview", "STAR stories", "interview questions", "behavioral questions"</p>
+<h2 id="core-capabilities">Core Capabilities</h2>
+<ul>
+<li>Generate role-specific interview questions</li>
+<li>Create STAR stories from resume bullets</li>
+<li>Predict questions based on job description</li>
+<li>Prepare answers for common questions</li>
+<li>Create talking points for each experience</li>
+<li>Identify potential concerns and prepare responses</li>
+</ul>
+<h2 id="interview-preparation-framework">Interview Preparation Framework</h2>
+<h3 id="phase-1-role-analysis">Phase 1: Role Analysis</h3>
+<ul>
+<li>Extract likely questions from job description</li>
+<li>Identify skills that will be tested</li>
+<li>Research company interview style</li>
+</ul>
+<h3 id="phase-2-story-banking">Phase 2: Story Banking</h3>
+<ul>
+<li>Convert resume bullets into STAR stories</li>
+<li>Create stories for common competencies</li>
+<li>Practice concise delivery</li>
+</ul>
+<h3 id="phase-3-mock-preparation">Phase 3: Mock Preparation</h3>
+<ul>
+<li>Practice common questions</li>
+<li>Prepare questions to ask</li>
+<li>Research company-specific topics</li>
+</ul>
+<h2 id="the-star-method-detailed">The STAR Method Detailed</h2>
+<h3 id="structure">Structure</h3>
+<ul>
+<li><strong>S</strong>ituation: Set the context (1-2 sentences)</li>
+<li><strong>T</strong>ask: Describe your responsibility (1 sentence)</li>
+<li><strong>A</strong>ction: Explain what YOU did (2-3 sentences)</li>
+<li><strong>R</strong>esult: Share the outcome with metrics (1-2 sentences)</li>
+</ul>
+<h3 id="star-story-template">STAR Story Template</h3>
+<pre><code>SITUATION: &quot;At [Company], we faced [specific challenge/context]...&quot;
+TASK: &quot;I was responsible for [specific ownership]...&quot;
+ACTION: &quot;I [specific action 1], [specific action 2], and [specific action 3]...&quot;
+RESULT: &quot;As a result, [quantified outcome]. This led to [business impact].&quot;
+</code></pre>
+<h3 id="example-star-story">Example STAR Story</h3>
+<p><strong>Question:</strong> "Tell me about a time you led a team through a difficult project."</p>
+<pre><code>SITUATION: &quot;At TechCorp, our main product was losing customers to a competitor who had launched a better mobile experience. We were seeing 5% monthly churn, up from our normal 2%.&quot;
+TASK: &quot;As the product manager, I was responsible for turning around our mobile product to stop the bleeding and win back customers.&quot;
+ACTION: &quot;I started by interviewing 30 churned customers to understand exactly why they left. Based on that research, I prioritized 5 critical features that would achieve parity with competitors. I then worked with engineering to restructure our roadmap, negotiated with leadership to add 2 contract developers, and implemented weekly sprint reviews. I also started a beta program with 50 of our best customers to get feedback before full launch.&quot;
+RESULT: &quot;We launched the improved mobile app in 3 months, reducing churn from 5% back to 2% within 60 days. We recovered 35% of churned customers and the mobile NPS increased from 32 to 58. This was recognized in our all-hands as a turnaround success.&quot;
+</code></pre>
+<p><strong>Time:</strong> 90 seconds to 2 minutes</p>
+<h2 id="story-banking-process">Story Banking Process</h2>
+<h3 id="step-1-identify-core-competencies">Step 1: Identify Core Competencies</h3>
+<p><strong>Leadership:</strong> Led a team through challenge; managed conflict; made a difficult decision; delegated effectively; developed/mentored someone.
+<strong>Problem-Solving:</strong> Solved complex technical problem; fixed a broken process; handled unexpected obstacle; decided with incomplete information; improved something proactively.
+<strong>Collaboration:</strong> Worked with difficult colleague; aligned cross-functional stakeholders; built consensus; partnered with other teams; influenced without authority.
+<strong>Achievement:</strong> Exceeded goals; delivered under pressure; went above and beyond; took initiative; accomplished something you're proud of.
+<strong>Failure/Growth:</strong> Made a mistake and learned; received critical feedback; failed and recovered; changed approach based on learning.</p>
+<h3 id="step-2-map-resume-to-stories">Step 2: Map Resume to Stories</h3>
+<p>For each resume bullet, create a full STAR story. Each story should have:
+- <strong>Full version:</strong> 2 minutes (for "tell me about a time...")
+- <strong>Short version:</strong> 60 seconds (for follow-ups)
+- <strong>One-liner:</strong> 15 seconds (for "give me an example")</p>
+<h2 id="common-interview-questions-by-category">Common Interview Questions by Category</h2>
+<h3 id="behavioral">Behavioral</h3>
+<p><strong>Leadership:</strong> "Tell me about a time you led a team." · "Describe a situation where you had to make an unpopular decision." · "How have you developed team members?" · "Tell me about a time you dealt with a difficult team member."
+<strong>Problem-Solving:</strong> "Describe a complex problem you solved." · "Tell me about a time something didn't go as planned." · "How do you approach problems with incomplete information?" · "Give an example of an innovative solution."
+<strong>Collaboration:</strong> "Tell me about working with someone difficult." · "Describe a time you had to influence someone without authority." · "How do you handle disagreements with colleagues?" · "Tell me about a successful cross-functional project."
+<strong>Achievement:</strong> "What's your proudest professional accomplishment?" · "Tell me about a time you exceeded expectations." · "Describe a goal you achieved against the odds." · "What's the biggest impact you've had in your career?"
+<strong>Failure/Growth:</strong> "Tell me about a time you failed." · "What's the biggest mistake you've made at work?" · "How do you handle criticism?" · "What would you do differently in your career?"</p>
+<h3 id="role-specific-engineering">Role-Specific (Engineering)</h3>
+<ul>
+<li>"Describe your experience with [specific technology]."</li>
+<li>"How do you approach code reviews?"</li>
+<li>"Tell me about a technical challenge you solved."</li>
+<li>"How do you balance technical debt vs. features?"</li>
+</ul>
+<h3 id="standard">Standard</h3>
+<p><strong>About You:</strong> "Tell me about yourself." (2 min pitch) · "Walk me through your resume." · "Why are you looking for a new role?" · "Where do you see yourself in 5 years?"
+<strong>About the Role:</strong> "Why this role?" · "What interests you about this position?" · "What would you do in your first 90 days?"
+<strong>About the Company:</strong> "Why this company?" · "What do you know about us?" · "What excites you about our mission?"</p>
+<h2 id="questions-to-ask-interviewers">Questions to Ask Interviewers</h2>
+<p><strong>Hiring Manager:</strong> "What does success look like at 30/60/90 days?" · "What are the biggest challenges facing the team?" · "How is performance measured?" · "What's the team structure?"
+<strong>Team Members:</strong> "What's a typical week like?" · "What do you enjoy most about working here?" · "How do teams collaborate?" · "What would you want a new hire to know?"
+<strong>Executives:</strong> "What's the company's strategy for the next year?" · "How does this team contribute to company goals?" · "What keeps you excited about the company?"
+<strong>To Avoid:</strong> ❌ salary/benefits (save for HR) · ❌ things you could Google · ❌ negative questions about company problems · ❌ yes/no questions.</p>
+<h2 id="handling-difficult-questions">Handling Difficult Questions</h2>
+<h3 id="whats-your-greatest-weakness">"What's your greatest weakness?"</h3>
+<p>Formula: Real weakness + Self-awareness + Improvement steps.</p>
+<blockquote>
+<p>"I tend to be overly detail-oriented, which can slow me down. I've recognized this and now set time limits for tasks and ask for feedback on when good enough is good enough. I've also learned to delegate detailed work when appropriate."</p>
+</blockquote>
+<h3 id="why-are-you-leaving-your-current-job">"Why are you leaving your current job?"</h3>
+<p>Keep it positive, forward-looking, brief.</p>
+<blockquote>
+<p>"I've learned a lot at [Company], but I'm looking for [specific opportunity] that I don't see in my current path. This role offers exactly that — the chance to [specific thing]."</p>
+</blockquote>
+<h3 id="tell-me-about-a-time-you-failed">"Tell me about a time you failed"</h3>
+<p>Must include: real failure, what you learned, how you applied the learning.</p>
+<blockquote>
+<p>"In my first year as a PM, I launched a feature without sufficient user research. It was technically sound but users found it confusing — only 10% adopted it. I learned that building the right thing matters more than building the thing right. Since then I never skip user research — at least 10 user interviews before major feature decisions."</p>
+</blockquote>
+<h3 id="salary-questions">Salary Questions</h3>
+<p>Deflect until you must answer:</p>
+<blockquote>
+<p>"I'm flexible on compensation and more focused on finding the right role. Can you share the range budgeted for this position?"</p>
+</blockquote>
+<p>If pressed:</p>
+<blockquote>
+<p>"Based on my research and experience, I'm looking in the range of $X-$Y, but I'm open to discussing the full package."</p>
+</blockquote>
+<h2 id="output-format">Output Format</h2>
+<pre><code class="language-markdown"># INTERVIEW PREP: [POSITION] AT [COMPANY]
+## Role Analysis  (key competencies they'll test + evidence from JD)
+## Predicted Questions  (High / Medium probability → mapped to a story)
+## Your STAR Story Bank  (each: name, use-for tags, full STAR, 60s version)
+## &quot;Tell Me About Yourself&quot; Script  (2-min pitch tailored to this role)
+## Questions to Ask  (hiring manager / team)
+## Company Research Notes  (recent news, facts to reference, potential concerns)
+## Red Flag Answers to Avoid
+</code></pre>
+<h2 id="implementation-checklist">Implementation Checklist</h2>
+<ol>
+<li>Analyze job description for competencies</li>
+<li>Create 8-10 STAR stories covering all competencies</li>
+<li>Write "tell me about yourself" pitch</li>
+<li>Prepare answers for likely questions</li>
+<li>Research company thoroughly</li>
+<li>Prepare thoughtful questions to ask</li>
+<li>Practice out loud (time yourself)</li>
+<li>Prepare logistics (tech check, route)</li>
+<li>Review the day before</li>
+<li>Send thank you notes after</li>
+</ol>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/job-search/interview-prep-generator.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

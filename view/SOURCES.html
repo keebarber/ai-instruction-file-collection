@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOURCES · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#4f46e5;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../index.html">← Overview</a>
+    <span class="crumb"><b>Reference</b> / SOURCES.md</span>
+    <span class="right"><a class="raw" href="../SOURCES.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="sources-provenance">Sources &amp; provenance</h1>
+<p>Where every file in this collection came from, how it was retrieved, and how faithful it is to the original. Use this to re-check or refresh sources later.</p>
+<p><strong>Retrieved:</strong> 2026-06-26, via web fetch (raw GitHub / page content) and web search.</p>
+<p><strong>Legend — fidelity:</strong>
+- <strong>Verbatim</strong> — original content saved as-is.
+- <strong>Verbatim (condensed)</strong> — original wording kept, but web nav/boilerplate stripped and long pages trimmed. No claims added.
+- <strong>Distilled</strong> — my synthesis across multiple sources; not a copy of any single original. Sources listed.
+- <strong>Authored</strong> — written for this repo (indexes, READMEs, your profile).</p>
+<p><strong>Legend — verification:</strong>
+- <strong>Fetched</strong> — I pulled the actual content from this URL.
+- <strong>Search-verified</strong> — confirmed the repo/page exists via search, but did not download its full content.</p>
+<hr />
+<h2 id="coding-agents">coding-agents/</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>Verified</th>
+<th>License / attribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>humanlayer-writing-a-good-CLAUDE-md.md</code></td>
+<td>https://www.humanlayer.dev/blog/writing-a-good-claude-md</td>
+<td>Verbatim (condensed)</td>
+<td>Fetched</td>
+<td>© HumanLayer, by Kyle (2025-11-25). Quoted/condensed for reference.</td>
+</tr>
+<tr>
+<td><code>anthropic-claude-code-best-practices.md</code></td>
+<td>https://code.claude.com/docs/en/best-practices</td>
+<td>Verbatim (condensed)</td>
+<td>Fetched</td>
+<td>© Anthropic. Official docs, condensed.</td>
+</tr>
+<tr>
+<td><code>agents-md-spec-and-examples.md</code></td>
+<td>https://agents.md/ (examples from same page) · repo: https://github.com/agentsmd/agents.md</td>
+<td>Verbatim (condensed)</td>
+<td>Fetched</td>
+<td>Agentic AI Foundation / Linux Foundation.</td>
+</tr>
+<tr>
+<td><code>openai-codex-agents-md-guide.md</code></td>
+<td>https://developers.openai.com/codex/guides/agents-md</td>
+<td>Verbatim (condensed)</td>
+<td>Fetched</td>
+<td>© OpenAI. Official docs, condensed.</td>
+</tr>
+<tr>
+<td><code>shanraisshan-CLAUDE.md</code></td>
+<td>https://raw.githubusercontent.com/shanraisshan/claude-code-best-practice/main/CLAUDE.md (repo: https://github.com/shanraisshan/claude-code-best-practice)</td>
+<td>Verbatim</td>
+<td>Fetched</td>
+<td>© shanraisshan. Excerpted.</td>
+</tr>
+<tr>
+<td><code>how-to-write-code-rules.cheatsheet.md</code></td>
+<td>Synthesis of: code.claude.com/docs/en/best-practices · agents.md · github.com/PatrickJS/awesome-cursorrules</td>
+<td>Distilled</td>
+<td>Fetched (first two) / Search-verified (cursorrules)</td>
+<td>n/a — original synthesis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="writing-and-voice">writing-and-voice/</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>Verified</th>
+<th>License / attribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avoid-ai-writing.SKILL.md</code></td>
+<td>https://raw.githubusercontent.com/conorbronsdon/avoid-ai-writing/main/SKILL.md (repo: https://github.com/conorbronsdon/avoid-ai-writing)</td>
+<td>Verbatim</td>
+<td>Fetched</td>
+<td><strong>MIT License</strong> © Conor Bronsdon. Free to use/modify with attribution.</td>
+</tr>
+<tr>
+<td><code>words-and-phrases-to-avoid.cheatsheet.md</code></td>
+<td>Synthesis of: github.com/conorbronsdon/avoid-ai-writing · en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing · pangram.com (detection research) · github.com/brandonwise/humanizer</td>
+<td>Distilled</td>
+<td>Fetched (avoid-ai-writing) / Search-verified (others; Wikipedia page fetch returned empty, referenced not extracted)</td>
+<td>Word tiers adapted from avoid-ai-writing (MIT) / brandonwise/humanizer.</td>
+</tr>
+<tr>
+<td><code>how-to-write-and-sound.md</code></td>
+<td>Synthesis of: avoid-ai-writing SKILL.md (tone section) · platform.claude.com/docs/.../claude-prompting-best-practices · github.com/anthropics/prompt-eng-interactive-tutorial</td>
+<td>Distilled</td>
+<td>Fetched (skill) / Search-verified (Anthropic docs)</td>
+<td>n/a — original synthesis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="asking-questions">asking-questions/</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>Verified</th>
+<th>License / attribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>when-and-how-to-ask-questions.md</code></td>
+<td>Synthesis of: code.claude.com/docs/en/best-practices ("let Claude interview you") · developers.openai.com/codex/prompting · platform.claude.com/docs/.../claude-prompting-best-practices</td>
+<td>Distilled</td>
+<td>Fetched (Claude best-practices) / Search-verified (others)</td>
+<td>n/a — original synthesis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-prompts">system-prompts/</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>Verified</th>
+<th>License / attribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Annotated link list (no content vendored). Links below.</td>
+<td>Authored</td>
+<td>mixed (see below)</td>
+<td>Linked repos retain their own licenses.</td>
+</tr>
+</tbody>
+</table>
+<p>Linked from <code>system-prompts/README.md</code>:
+- https://github.com/jujumilk3/leaked-system-prompts — Search-verified (page fetched)
+- https://github.com/elder-plinius/CL4R1T4S — Search-verified
+- https://github.com/asgeirtj/system_prompts_leaks — Search-verified
+- https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools — Search-verified (138K★ confirmed)
+- https://github.com/EliFuzz/awesome-system-prompts — Search-verified
+- https://github.com/Piebald-AI/claude-code-system-prompts — Search-verified
+- Official refs: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices · https://github.com/anthropics/prompt-eng-interactive-tutorial · https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents · https://developers.openai.com/codex/prompting · https://docs.claude.com/en/release-notes/system-prompts</p>
+<blockquote>
+<p>Note on "leaked" collections: these are community-extracted and may be inaccurate or outdated. They are linked, not copied, partly for that reason and partly to respect their changing state. Verify against official docs where possible.</p>
+</blockquote>
+<h2 id="career-context">career-context/</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source</th>
+<th>Fidelity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>candidate-profile.md</code></td>
+<td>Your uploaded resume: <code>Keenan Barber - Resume.pdf</code></td>
+<td>Authored (from your resume)</td>
+<td>Facts taken directly from the resume; <code>[NEED: ...]</code> markers flag items the resume didn't cover. No facts invented.</td>
+</tr>
+<tr>
+<td><code>README.md</code></td>
+<td>—</td>
+<td>Authored</td>
+<td>Guidance written for this repo.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="repo-root">Repo root</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source</th>
+<th>Fidelity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Curated index; links gathered via web search 2026-06-26</td>
+<td>Authored</td>
+<td>Link directory; each external link attributed inline.</td>
+</tr>
+<tr>
+<td><code>SOURCES.md</code></td>
+<td>—</td>
+<td>Authored</td>
+<td>This file.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="also-referenced-in-the-master-readme-link-directory-not-downloaded">Also referenced in the master README (link directory, not downloaded)</h2>
+<p>These were surfaced via web search and listed in <code>README.md</code> for further reading. Search-verified existence; full content not retrieved:
+- https://github.com/PatrickJS/awesome-cursorrules
+- https://github.com/tonynguyennvt/cursor-rules-awesome
+- https://github.com/FlorianBruniaux/claude-code-ultimate-guide
+- https://github.com/hesreallyhim/awesome-claude-code
+- https://kirill-markin.com/articles/claude-code-rules-for-ai/
+- https://github.com/brandonwise/humanizer
+- https://www.pangram.com/
+- https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing</p>
+<h2 id="skills-added-2026-06-26">skills/  (added 2026-06-26)</h2>
+<p>Real <code>SKILL.md</code> files, downloaded. All <strong>Fetched</strong> unless noted.</p>
+<h3 id="skillsjob-search">skills/job-search/</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resume-cover-letter.SKILL.md</code></td>
+<td>https://github.com/jezweb/claude-skills/blob/main/plugins/writing/skills/resume-cover-letter/SKILL.md</td>
+<td>Verbatim</td>
+<td>jezweb/claude-skills (check repo)</td>
+</tr>
+<tr>
+<td><code>job-description-analyzer.SKILL.md</code></td>
+<td>https://github.com/Paramchoudhary/ResumeSkills/blob/main/skills/job-description-analyzer/SKILL.md</td>
+<td>Verbatim (long worked-example condensed)</td>
+<td><strong>MIT</strong></td>
+</tr>
+<tr>
+<td><code>interview-prep-generator.SKILL.md</code></td>
+<td>https://github.com/Paramchoudhary/ResumeSkills/blob/main/skills/interview-prep-generator/SKILL.md</td>
+<td>Verbatim</td>
+<td><strong>MIT</strong></td>
+</tr>
+<tr>
+<td><code>salary-negotiation-prep.SKILL.md</code></td>
+<td>https://github.com/Paramchoudhary/ResumeSkills/blob/main/skills/salary-negotiation-prep/SKILL.md</td>
+<td>Verbatim</td>
+<td><strong>MIT</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="skillscoding-debugging-testing">skills/coding-debugging-testing/</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>systematic-debugging.SKILL.md</code></td>
+<td>https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md</td>
+<td>Verbatim (sibling ref files not included)</td>
+<td>obra/superpowers (check repo)</td>
+</tr>
+<tr>
+<td><code>test-driven-development.SKILL.md</code></td>
+<td>https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md</td>
+<td>Verbatim (sibling ref file not included)</td>
+<td>obra/superpowers (check repo)</td>
+</tr>
+<tr>
+<td><code>verification-before-completion.SKILL.md</code></td>
+<td>https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md</td>
+<td>Verbatim</td>
+<td>obra/superpowers (check repo)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="skillsmeta">skills/meta/</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source URL</th>
+<th>Fidelity</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skill-creator.SKILL.md</code></td>
+<td>https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</td>
+<td>Verbatim (eval-harness sections condensed; bundled scripts not included)</td>
+<td><strong>Apache 2.0</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="skillsreadmemd">skills/README.md</h3>
+<p>Authored index. Links to curated skill lists, all Search-verified: karanb192/awesome-claude-skills, VoltAgent/awesome-agent-skills, travisvn/awesome-claude-skills, ComposioHQ/awesome-claude-skills, anthropics/skills, obra/superpowers, Paramchoudhary/ResumeSkills.</p>
+<blockquote>
+<p>Note on api.github.com: directory listings were fetched via the GitHub contents API; some calls returned empty (intermittent rate limiting), so a few skill paths were resolved by fetching the raw file directly. All saved files were confirmed by successful raw fetch.</p>
+</blockquote>
+<hr />
+<h2 id="how-to-refresh-this-collection-later">How to refresh this collection later</h2>
+<ol>
+<li>Re-fetch any "Fetched" URL above and diff against the saved file (sources change — especially the official docs and the avoid-ai-writing skill, which is actively versioned; this copy is v3.3.0).</li>
+<li>For "Search-verified" links, open the repo and check the star count / last-commit date to gauge whether it's still maintained.</li>
+<li>Update the <strong>Retrieved</strong> date at the top when you do a refresh pass.</li>
+</ol>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>SOURCES.md</code> · part of the <a href="../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>when-and-how-to-ask-questions · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#0d9488;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Asking questions</b> / when-and-how-to-ask-questions.md</span>
+    <span class="right"><span class="chip b-distilled">Distilled</span><a class="raw" href="../../asking-questions/when-and-how-to-ask-questions.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="when-and-how-an-ai-should-ask-questions">When and how an AI should ask questions</h1>
+<blockquote>
+<p>A compact, paste-ready rule set for "when to ask clarifying questions vs. proceed, and how to do it well." Synthesized from Anthropic's Claude Code best practices (the "let Claude interview you" pattern), OpenAI Codex prompting guidance, and common agent-harness system prompts.</p>
+</blockquote>
+<h2 id="the-core-decision-ask-vs-proceed">The core decision: ask vs. proceed</h2>
+<p>Asking has a cost (it interrupts the user) and a benefit (it avoids solving the wrong problem). The rule of thumb most good harnesses use:</p>
+<ul>
+<li><strong>Proceed without asking</strong> when the request has an obvious default, the answer is discoverable from the code/files/context, or the task is small and reversible. State the assumption you're making and move on.</li>
+<li><strong>Ask</strong> only when the answer would <em>change what you build</em>, you cannot resolve it from the request or sensible defaults, and getting it wrong would waste real work.</li>
+<li><strong>Don't gate research on a question.</strong> For information-gathering tasks, start searching first — initial results usually make the clarifying question sharper and more concrete. Ask alongside or after first results, not before.</li>
+</ul>
+<h2 id="paste-ready-rule-block">Paste-ready rule block</h2>
+<pre><code># Asking questions
+- Before multi-step work, surface genuine ambiguity (audience, scope, format, constraints) in ONE batched round of questions, then proceed.
+- Only ask when the answer changes what you do. If a sensible default exists, take it, state it, and continue.
+- Don't ask what you can find. Check the code, files, docs, and conversation history first.
+- One round, not a drip. Group related questions together rather than asking one at a time across many turns.
+- Prefer concrete multiple-choice options over open-ended questions; offer a recommended default.
+- For factual lookups and small reversible edits, don't ask — just do it and report what you assumed.
+- After finishing something ambiguous, note the assumptions you made so the user can correct course.
+</code></pre>
+<h2 id="the-interview-me-pattern-anthropic-for-larger-features">The "interview me" pattern (Anthropic, for larger features)</h2>
+<p>For a non-trivial feature, have the agent interview the user <em>before</em> writing code:</p>
+<pre><code>I want to build [brief description]. Interview me in detail using a multiple-choice
+question tool. Ask about technical implementation, UI/UX, edge cases, concerns, and
+tradeoffs. Don't ask obvious questions — dig into the hard parts I might not have
+considered. Keep interviewing until we've covered everything, then write a complete
+spec to SPEC.md.
+</code></pre>
+<p>Why it works: the agent raises things the user hasn't thought about (edge cases, tradeoffs), and the output is a self-contained spec — naming the files/interfaces involved, stating what's out of scope, and ending with an end-to-end verification step. Then a fresh session executes the spec with clean context. Time spent making the spec precise pays off more than time spent watching the implementation.</p>
+<h2 id="how-to-ask-well">How to ask well</h2>
+<ul>
+<li><strong>Batch and bound.</strong> One screen of questions, each with a clear default, beats a long back-and-forth.</li>
+<li><strong>Make options mutually exclusive and concrete.</strong> "Postgres vs. SQLite vs. in-memory" beats "what database do you want?"</li>
+<li><strong>Recommend.</strong> Put your recommended option first and label it. Users often just want a sensible default confirmed.</li>
+<li><strong>Explain the stakes briefly.</strong> A one-line "this changes X" tells the user why you're asking.</li>
+<li><strong>Don't ask to ask.</strong> Never send "Is my plan ready?" or "Should I proceed?" — either proceed, or ask a substantive question.</li>
+</ul>
+<h2 id="signs-youre-asking-too-much-or-too-little">Signs you're asking too much (or too little)</h2>
+<ul>
+<li><strong>Too much:</strong> asking things answered in the project files or the user's own message; asking one question per turn; asking when any reasonable default would do.</li>
+<li><strong>Too little:</strong> building for an hour on an assumption you could have confirmed in one question; producing a deliverable in the wrong format/scope; "fixing" the symptom because you didn't confirm the actual goal.</li>
+</ul>
+<h2 id="source-patterns-worth-reading">Source patterns worth reading</h2>
+<ul>
+<li>Anthropic, "Best practices for Claude Code" → the "Let Claude interview you" section: https://code.claude.com/docs/en/best-practices</li>
+<li>OpenAI Codex prompting: https://developers.openai.com/codex/prompting</li>
+<li>Anthropic prompt engineering ("if unsure, say so; ask 1 clarifying question"): https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</li>
+</ul>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>asking-questions/when-and-how-to-ask-questions.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

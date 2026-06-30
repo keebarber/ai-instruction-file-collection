@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>humanlayer-writing-a-good-CLAUDE-md · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#2563eb;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../index.html">← Overview</a>
+    <span class="crumb"><b>Coding agents</b> / humanlayer-writing-a-good-CLAUDE-md.md</span>
+    <span class="right"><span class="chip b-condensed">Verbatim (condensed)</span><a class="raw" href="../../coding-agents/humanlayer-writing-a-good-CLAUDE-md.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<h1 id="writing-a-good-claudemd">Writing a good CLAUDE.md</h1>
+<blockquote>
+<p>SOURCE: HumanLayer Blog, by Kyle — https://www.humanlayer.dev/blog/writing-a-good-claude-md (Nov 25, 2025). Saved 2026-06-26.
+Note: this also applies to <code>AGENTS.md</code>, the open-source equivalent for OpenCode, Zed, Cursor, Codex, etc.
+This is the single best essay on <em>why</em> most CLAUDE.md files fail and how to write one that actually changes the agent's behavior.</p>
+</blockquote>
+<h2 id="principle-llms-are-mostly-stateless">Principle: LLMs are (mostly) stateless</h2>
+<p>LLMs are stateless functions. Their weights are frozen by the time they're used for inference, so they don't learn over time. The only thing the model knows about your codebase is the tokens you put into it.</p>
+<p>Coding agent harnesses such as Claude Code usually require you to manage the agent's memory explicitly. <code>CLAUDE.md</code> (or <code>AGENTS.md</code>) is the only file that by default goes into <em>every single conversation</em> you have with the agent.</p>
+<p>Three implications:</p>
+<ol>
+<li>Coding agents know absolutely nothing about your codebase at the beginning of each session.</li>
+<li>The agent must be told anything that's important to know about your codebase each time you start a session.</li>
+<li><code>CLAUDE.md</code> is the preferred way of doing this.</li>
+</ol>
+<h2 id="claudemd-onboards-claude-to-your-codebase">CLAUDE.md onboards Claude to your codebase</h2>
+<p>Since Claude doesn't know anything about your codebase at the beginning of each session, use <code>CLAUDE.md</code> to onboard it. At a high level it should cover:</p>
+<ul>
+<li><strong>WHAT</strong>: the tech, your stack, the project structure. Give Claude a map of the codebase. Especially important in monorepos — tell Claude what the apps are, what the shared packages are, and what everything is for so it knows where to look.</li>
+<li><strong>WHY</strong>: the <em>purpose</em> of the project and what everything is doing in the repository.</li>
+<li><strong>HOW</strong>: how it should work on the project. Do you use <code>bun</code> instead of <code>node</code>? How can Claude verify its changes? How does it run tests, typechecks, and compilation steps?</li>
+</ul>
+<p>But the way you do this matters. Don't try to stuff every command Claude could possibly need into your <code>CLAUDE.md</code> — you'll get sub-optimal results.</p>
+<h2 id="claude-often-ignores-claudemd">Claude often ignores CLAUDE.md</h2>
+<p>Claude Code injects this system reminder along with your <code>CLAUDE.md</code> content:</p>
+<pre><code>&lt;system-reminder&gt;
+      IMPORTANT: this context may or may not be relevant to your tasks.
+      You should not respond to this context unless it is highly relevant to your task.
+&lt;/system-reminder&gt;
+</code></pre>
+<p>As a result, Claude ignores the contents of <code>CLAUDE.md</code> if it decides they're not relevant to the current task. The more information in the file that's not <strong>universally applicable</strong>, the more likely Claude is to ignore your instructions. Most CLAUDE.md files include instructions that aren't broadly applicable — people treat the file as a place to add "hotfixes" for behavior they didn't like. The Claude Code team apparently found that telling Claude to ignore the bad instructions produced better results overall.</p>
+<h2 id="creating-a-good-claudemd-file">Creating a good CLAUDE.md file</h2>
+<h3 id="less-instructions-is-more">Less (instructions) is more</h3>
+<p>It's tempting to stuff every command, code standard, and style guideline into <code>CLAUDE.md</code>. Don't. <a href="https://arxiv.org/pdf/2507.11538">Research</a> indicates:</p>
+<ol>
+<li><strong>Frontier thinking LLMs can follow ~150–200 instructions with reasonable consistency.</strong> Smaller and non-thinking models attend to fewer.</li>
+<li><strong>Smaller models degrade much faster</strong> — exponential decay in instruction-following as instruction count rises, vs. linear for large thinking models. Avoid small models for multi-step tasks.</li>
+<li><strong>LLMs bias toward instructions on the peripheries of the prompt</strong> — the very beginning (system message and CLAUDE.md) and the very end (most recent user messages).</li>
+<li><strong>As instruction count increases, instruction-following quality decreases <em>uniformly</em></strong>. More instructions doesn't mean it ignores the newest ones — it begins to ignore <em>all of them</em> uniformly.</li>
+</ol>
+<p>Claude Code's system prompt already contains ~50 individual instructions — nearly a third of what the agent can reliably follow, before your rules, plugins, skills, or user messages. So your <code>CLAUDE.md</code> should contain as few instructions as possible, ideally only ones universally applicable to your tasks.</p>
+<h3 id="file-length-applicability">File length &amp; applicability</h3>
+<p>An LLM performs better when its context window is full of focused, relevant context (examples, related files, tool calls, results) than when it has a lot of irrelevant context. Since <code>CLAUDE.md</code> goes into <em>every</em> session, keep its contents as universally applicable as possible. Avoid, e.g., instructions on how to structure a new database schema — they won't matter and will distract the model when you're working on something unrelated.</p>
+<p>General consensus: <strong>&lt; 300 lines is best, shorter is better.</strong> HumanLayer's root <code>CLAUDE.md</code> is <em>less than sixty lines</em>.</p>
+<h3 id="progressive-disclosure">Progressive disclosure</h3>
+<p>Instead of cramming build/test/convention instructions into <code>CLAUDE.md</code>, keep task-specific instructions in <em>separate markdown files</em> with self-descriptive names:</p>
+<pre><code>agent_docs/
+  |- building_the_project.md
+  |- running_tests.md
+  |- code_conventions.md
+  |- service_architecture.md
+  |- database_schema.md
+  |- service_communication_patterns.md
+</code></pre>
+<p>In <code>CLAUDE.md</code>, list these files with a brief description of each and instruct Claude to decide which (if any) are relevant and read them before working. Or ask Claude to present the files it wants to read for approval first.</p>
+<p><strong>Prefer pointers to copies.</strong> Don't include code snippets — they go out of date fast. Use <code>file:line</code> references to point Claude to the authoritative context. (Conceptually similar to how Claude Skills work.)</p>
+<h3 id="claude-is-not-an-expensive-linter">Claude is (not) an expensive linter</h3>
+<p>One of the most common mistakes is putting code style guidelines in <code>CLAUDE.md</code>. <strong>Never send an LLM to do a linter's job</strong> — LLMs are expensive and slow compared to deterministic tools. Style guidelines add instructions and mostly-irrelevant snippets that degrade performance and eat context.</p>
+<p>LLMs are in-context learners. If your code follows certain patterns, a few searches of your codebase (or a good research doc) will get the agent to follow existing conventions without being told. If you feel strongly, set up a <a href="https://code.claude.com/docs/en/hooks#stop">Stop hook</a> that runs your formatter/linter and presents errors to Claude to fix. Use a linter that auto-fixes (e.g., Biome). Or create a slash command that includes your guidelines and points Claude at your <code>git status</code>.</p>
+<h3 id="dont-use-init-or-auto-generate-your-claudemd">Don't use /init or auto-generate your CLAUDE.md</h3>
+<p>Because <code>CLAUDE.md</code> goes into <em>every</em> session, it's one of the highest-leverage points of the harness. A bad line of code is one bad line. A bad line in <code>CLAUDE.md</code> affects every phase of every workflow and every artifact it produces. Spend time thinking carefully about every single line. Don't auto-generate it.</p>
+<h2 id="in-conclusion">In conclusion</h2>
+<ol>
+<li><code>CLAUDE.md</code> is for onboarding Claude into your codebase. Define your project's <strong>WHY</strong>, <strong>WHAT</strong>, and <strong>HOW</strong>.</li>
+<li><strong>Less (instructions) is more.</strong> Include as few instructions as reasonably possible.</li>
+<li>Keep the contents <strong>concise and universally applicable</strong>.</li>
+<li>Use <strong>progressive disclosure</strong> — tell Claude <em>how to find</em> important information rather than dumping it all in.</li>
+<li>Claude is not a linter. Use linters, formatters, hooks, and slash commands instead.</li>
+<li><code>CLAUDE.md</code> is the highest-leverage point of the harness, so avoid auto-generating it. Craft it carefully.</li>
+</ol>
+<h2 id="related-humanlayer-posts">Related HumanLayer posts</h2>
+<ul>
+<li>Context-Efficient Backpressure for Coding Agents — https://www.humanlayer.dev/blog/context-efficient-backpressure</li>
+<li>Advanced Context Engineering for Coding Agents — https://www.humanlayer.dev/blog/advanced-context-engineering</li>
+<li>12-factor-agents — https://github.com/humanlayer/12-factor-agents</li>
+</ul>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>coding-agents/humanlayer-writing-a-good-CLAUDE-md.md</code> · part of the <a href="../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>

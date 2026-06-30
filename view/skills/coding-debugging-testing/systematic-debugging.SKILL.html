@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>systematic-debugging.SKILL · AI Instruction File Collection</title>
+<style>
+:root{
+  --paper:#fbfaf7;--card:#fff;--ink:#1d2230;--ink-soft:#3f465a;--ink-faint:#7c8499;
+  --line:#e7e3da;--line-soft:#efece4;--accent:#ea580c;--accent-ink:#4f46e5;
+  --code-bg:#f5f3ee;--shadow:0 1px 2px rgba(20,24,40,.04),0 6px 20px rgba(20,24,40,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16.5px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+a:hover{text-decoration:underline}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line)}
+.bar-in{max-width:860px;margin:0 auto;padding:11px clamp(18px,4vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--ink-soft);text-decoration:none;
+  border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;box-shadow:var(--shadow)}
+.back:hover{color:var(--ink);text-decoration:none;border-color:#d9d4c8}
+.crumb{font-size:13px;color:var(--ink-faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.crumb b{color:var(--accent);font-weight:600}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.chip{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.b-verbatim{background:#e7f6ec;color:#1a7f43}
+.b-condensed{background:#e3f3f1;color:#0d7d72}
+.b-distilled{background:#fdf0dd;color:#b6741a}
+.b-authored{background:#efe9fb;color:#6d3fc4}
+.b-links{background:#eceef2;color:#5a6276}
+.raw{font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+.raw:hover{color:var(--ink)}
+
+/* accent rule under bar */
+.accent-rule{height:3px;background:var(--accent)}
+
+/* article */
+main{max-width:820px;margin:0 auto;padding:38px clamp(18px,4vw,32px) 90px}
+.doc h1{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .5em}
+.doc h2{font-size:23px;letter-spacing:-.01em;margin:1.9em 0 .55em;padding-bottom:.28em;border-bottom:1px solid var(--line)}
+.doc h3{font-size:18.5px;margin:1.7em 0 .5em}
+.doc h4{font-size:15.5px;margin:1.5em 0 .4em;color:var(--ink-soft);text-transform:none}
+.doc p{margin:.5em 0 1em}
+.doc a{color:var(--accent-ink);word-break:break-word}
+.doc ul,.doc ol{padding-left:1.35em;margin:.5em 0 1.2em}
+.doc li{margin:.32em 0}
+.doc li>ul,.doc li>ol{margin:.3em 0 .4em}
+.doc strong{color:var(--ink)}
+.doc hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+.doc blockquote{margin:1.2em 0;padding:.55em 1.1em;border-left:4px solid var(--accent);
+  background:#fff;border-radius:0 10px 10px 0;color:var(--ink-soft);box-shadow:var(--shadow)}
+.doc blockquote p{margin:.35em 0}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:var(--code-bg);padding:.12em .42em;border-radius:6px;color:#9d174d}
+.doc pre{background:#1d2230;color:#e8eaf0;padding:16px 18px;border-radius:12px;overflow:auto;
+  font-size:13.5px;line-height:1.6;margin:1.1em 0;box-shadow:var(--shadow)}
+.doc pre code{background:none;color:inherit;padding:0;font-size:13.5px}
+.doc table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:14.5px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.doc th{background:#f6f4ee;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.doc tr:last-child td{border-bottom:none}
+.doc img{max-width:100%}
+
+/* frontmatter panel */
+.frontmatter{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:10px;padding:12px 16px;margin:0 0 26px;box-shadow:var(--shadow)}
+.frontmatter .fm-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+.frontmatter pre{margin:0;background:none;color:var(--ink-soft);box-shadow:none;padding:0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+
+footer{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,32px) 60px;color:var(--ink-faint);font-size:13px}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <a class="back" href="../../../index.html">← Overview</a>
+    <span class="crumb"><b>Skills</b> / systematic-debugging.SKILL.md</span>
+    <span class="right"><span class="chip b-verbatim">Verbatim</span><a class="raw" href="../../../skills/coding-debugging-testing/systematic-debugging.SKILL.md">raw ↧</a></span>
+  </div>
+</div>
+<div class="accent-rule"></div>
+<main>
+  <article class="doc">
+<!--
+SOURCE: obra/superpowers (Jesse Vincent) — https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md
+Retrieved 2026-06-26, verbatim. Part of the "superpowers" agentic software-development skill library.
+Note: the original references sibling files (root-cause-tracing.md, defense-in-depth.md, condition-based-waiting.md)
+that are NOT included here — get them from the source repo if you want the full skill.
+-->
+<hr />
+<p>name: systematic-debugging
+description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes</p>
+<hr />
+<h1 id="systematic-debugging">Systematic Debugging</h1>
+<h2 id="overview">Overview</h2>
+<p>Random fixes waste time and create new bugs. Quick patches mask underlying issues.</p>
+<p><strong>Core principle:</strong> ALWAYS find root cause before attempting fixes. Symptom fixes are failure.</p>
+<p><strong>Violating the letter of this process is violating the spirit of debugging.</strong></p>
+<h2 id="the-iron-law">The Iron Law</h2>
+<pre><code>NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
+</code></pre>
+<p>If you haven't completed Phase 1, you cannot propose fixes.</p>
+<h2 id="when-to-use">When to Use</h2>
+<p>Use for ANY technical issue: test failures, bugs in production, unexpected behavior, performance problems, build failures, integration issues.</p>
+<p><strong>Use this ESPECIALLY when:</strong> under time pressure; "just one quick fix" seems obvious; you've already tried multiple fixes; previous fix didn't work; you don't fully understand the issue.</p>
+<p><strong>Don't skip when:</strong> issue seems simple (simple bugs have root causes too); you're in a hurry (rushing guarantees rework); manager wants it fixed NOW (systematic is faster than thrashing).</p>
+<h2 id="the-four-phases">The Four Phases</h2>
+<p>You MUST complete each phase before proceeding to the next.</p>
+<h3 id="phase-1-root-cause-investigation">Phase 1: Root Cause Investigation</h3>
+<p><strong>BEFORE attempting ANY fix:</strong></p>
+<ol>
+<li><strong>Read Error Messages Carefully</strong> — don't skip errors/warnings; they often contain the exact solution. Read stack traces completely. Note line numbers, file paths, error codes.</li>
+<li><strong>Reproduce Consistently</strong> — can you trigger it reliably? Exact steps? Every time? If not reproducible → gather more data, don't guess.</li>
+<li><strong>Check Recent Changes</strong> — what changed that could cause this? Git diff, recent commits, new dependencies, config changes, environmental differences.</li>
+<li><strong>Gather Evidence in Multi-Component Systems</strong> — when a system has multiple components (CI → build → signing, API → service → database), BEFORE proposing fixes add diagnostic instrumentation at each component boundary: log what data enters and exits each component, verify environment/config propagation, check state at each layer. Run once to gather evidence showing WHERE it breaks, then analyze to identify the failing component, then investigate that specific component.</li>
+<li><strong>Trace Data Flow</strong> — when the error is deep in the call stack, trace backward: where does the bad value originate? What called this with the bad value? Keep tracing up until you find the source. Fix at source, not at symptom.</li>
+</ol>
+<h3 id="phase-2-pattern-analysis">Phase 2: Pattern Analysis</h3>
+<ol>
+<li><strong>Find Working Examples</strong> — locate similar working code in the same codebase.</li>
+<li><strong>Compare Against References</strong> — if implementing a pattern, read the reference implementation COMPLETELY (don't skim).</li>
+<li><strong>Identify Differences</strong> — list every difference between working and broken, however small. Don't assume "that can't matter."</li>
+<li><strong>Understand Dependencies</strong> — what other components, settings, config, environment, and assumptions does it need?</li>
+</ol>
+<h3 id="phase-3-hypothesis-and-testing">Phase 3: Hypothesis and Testing</h3>
+<ol>
+<li><strong>Form Single Hypothesis</strong> — state clearly: "I think X is the root cause because Y." Be specific.</li>
+<li><strong>Test Minimally</strong> — make the SMALLEST possible change to test it. One variable at a time. Don't fix multiple things at once.</li>
+<li><strong>Verify Before Continuing</strong> — worked? → Phase 4. Didn't? → form a NEW hypothesis. DON'T stack more fixes.</li>
+<li><strong>When You Don't Know</strong> — say "I don't understand X." Don't pretend. Ask for help. Research more.</li>
+</ol>
+<h3 id="phase-4-implementation">Phase 4: Implementation</h3>
+<ol>
+<li><strong>Create Failing Test Case</strong> — simplest possible reproduction; automated if possible. MUST have before fixing. (Use the test-driven-development skill.)</li>
+<li><strong>Implement Single Fix</strong> — address the root cause. ONE change at a time. No "while I'm here" improvements or bundled refactoring.</li>
+<li><strong>Verify Fix</strong> — test passes now? No other tests broken? Issue actually resolved?</li>
+<li><strong>If Fix Doesn't Work</strong> — STOP. Count fixes tried. If &lt; 3: return to Phase 1 with new information. <strong>If ≥ 3: STOP and question the architecture.</strong> Don't attempt fix #4 without architectural discussion.</li>
+<li><strong>If 3+ Fixes Failed: Question Architecture</strong> — pattern indicating an architectural problem: each fix reveals new shared state/coupling elsewhere; fixes require "massive refactoring"; each fix creates new symptoms. STOP and question fundamentals: is this pattern fundamentally sound? Are we sticking with it through inertia? Refactor vs. continue fixing symptoms? Discuss with your human partner before more fixes. This is NOT a failed hypothesis — it's a wrong architecture.</li>
+</ol>
+<h2 id="red-flags-stop-and-follow-process">Red Flags — STOP and Follow Process</h2>
+<p>If you catch yourself thinking: "Quick fix for now, investigate later" · "Just try changing X and see" · "Add multiple changes, run tests" · "Skip the test, I'll manually verify" · "It's probably X, let me fix that" · "I don't fully understand but this might work" · proposing solutions before tracing data flow · "One more fix attempt" (after 2+) · each fix reveals a new problem elsewhere — <strong>ALL of these mean: STOP. Return to Phase 1.</strong></p>
+<h2 id="common-rationalizations">Common Rationalizations</h2>
+<table>
+<thead>
+<tr>
+<th>Excuse</th>
+<th>Reality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Issue is simple, don't need process"</td>
+<td>Simple issues have root causes too. Process is fast for simple bugs.</td>
+</tr>
+<tr>
+<td>"Emergency, no time for process"</td>
+<td>Systematic debugging is FASTER than guess-and-check thrashing.</td>
+</tr>
+<tr>
+<td>"Just try this first, then investigate"</td>
+<td>First fix sets the pattern. Do it right from the start.</td>
+</tr>
+<tr>
+<td>"I'll write test after confirming fix works"</td>
+<td>Untested fixes don't stick. Test first proves it.</td>
+</tr>
+<tr>
+<td>"Multiple fixes at once saves time"</td>
+<td>Can't isolate what worked. Causes new bugs.</td>
+</tr>
+<tr>
+<td>"Reference too long, I'll adapt the pattern"</td>
+<td>Partial understanding guarantees bugs. Read it completely.</td>
+</tr>
+<tr>
+<td>"I see the problem, let me fix it"</td>
+<td>Seeing symptoms ≠ understanding root cause.</td>
+</tr>
+<tr>
+<td>"One more fix attempt" (after 2+ failures)</td>
+<td>3+ failures = architectural problem. Question the pattern.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-reference">Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Key Activities</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Root Cause</td>
+<td>Read errors, reproduce, check changes, gather evidence</td>
+<td>Understand WHAT and WHY</td>
+</tr>
+<tr>
+<td>2. Pattern</td>
+<td>Find working examples, compare</td>
+<td>Identify differences</td>
+</tr>
+<tr>
+<td>3. Hypothesis</td>
+<td>Form theory, test minimally</td>
+<td>Confirmed or new hypothesis</td>
+</tr>
+<tr>
+<td>4. Implementation</td>
+<td>Create test, fix, verify</td>
+<td>Bug resolved, tests pass</td>
+</tr>
+</tbody>
+</table>
+<h2 id="real-world-impact-from-the-authors-debugging-sessions">Real-World Impact (from the author's debugging sessions)</h2>
+<ul>
+<li>Systematic approach: 15-30 minutes to fix vs. 2-3 hours of thrashing with random fixes.</li>
+<li>First-time fix rate: 95% vs 40%. New bugs introduced: near zero vs common.</li>
+</ul>
+  </article>
+</main>
+<footer>
+  <p>Rendered from <code>skills/coding-debugging-testing/systematic-debugging.SKILL.md</code> · part of the <a href="../../../index.html">AI Instruction File Collection</a>. Source &amp; license in <a href="../../../SOURCES.md">SOURCES.md</a>.</p>
+</footer>
+</body>
+</html>
